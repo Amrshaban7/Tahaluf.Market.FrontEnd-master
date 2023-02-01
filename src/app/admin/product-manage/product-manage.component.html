@@ -1,0 +1,391 @@
+
+
+
+<app-asidenav></app-asidenav>
+
+
+<main class="main-wrap">
+
+
+
+		
+    <section class="content-main">
+       
+        <a href="javascript:history.back()"><i class="material-icons md-arrow_back"></i> Go back </a>  <br><br>
+
+        <div class="content-header">
+            <div>
+                <h3 class="content-title card-title">Sections & Products</h3>
+                <p style="font-size:20px;">Inside <strong class="text-success" style="font-weight:700;">{{store.loadedStoreInfo.storeName}}</strong> Store</p>
+            </div>
+
+            <div style="display:inline-flex;">
+                <select class="form-select w-auto d-inline-block" (change)="openCreateSection(store.loadedStoreInfo.id , store.loadedStoreInfo.storeName )">
+                    <option>Actions</option>
+                    <option>Add Section</option>
+                </select> &nbsp;&nbsp;
+                <!-- <input type="text" placeholder="Search For a Product" class="form-control bg-white" (change)="Search($event)" > -->
+            </div>
+
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title"> Sections In <strong class="text-success">
+                    {{store.loadedStoreInfo.storeName}}
+                    </strong> Store</h5>
+
+                <div class="row">
+
+                    <div class="col-xl-2 col-lg-3 col-md-12" *ngFor="let obj of store.loadedStoreSection">
+
+                        <div class="card card-product-grid">
+
+                            <div class="text-endd" >
+                                <div class="dropdown" >
+                                    <a href="#" data-bs-toggle="dropdown"> <i class="material-icons md-more_horiz"></i>
+                                    </a>
+                                    <div class="dropdown-menu" >
+                                        <button class="dropdown-item"
+                                            (click)="openUpdate1(obj.id,obj.sectionName,obj.sectionDesc)">Edit</button>
+                                        <button class="dropdown-item text-danger"
+                                            (click)="openDeleteSection(obj.id)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-wrap" style="text-align:center">
+                                <a class="price mt-1">{{obj.sectionName}}</a>
+                                <div class="title">{{obj.sectionDesc}}</div> <!-- price-wrap.// -->
+                            </div>
+
+                        </div> <!-- card-product  end// -->
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+                
+            </div> <!--  card-body.// -->
+        </div> <!--  card.// -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <form [formGroup]="createform">
+
+                            <div class="mb-4">
+                                <label for="product_name" class="form-label">product Name</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="product_name" formControlName="productName"/>
+                            </div>
+
+                            <div class="mb-4">
+                            <label class="form-label">section Name</label>
+
+                            <mat-select formControlName="sectionID">
+                                <mat-option *ngFor="let obj of store.loadedStoreSection" [value]="obj.id">{{obj.sectionName}}</mat-option>
+                            </mat-select>
+
+                            </div>
+                            
+
+                            <div class="mb-4">
+                                <label class="form-label">price</label>
+                                <input type="number" placeholder="$" class="form-control" id="product_slug" formControlName="price" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Description</label>
+                                <textarea placeholder="Type here" class="form-control" formControlName="productDesc"></textarea>
+                            </div>
+
+                            <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="image_Path" #file (change)="UploadImage(file.files)">
+                            <label class="file-input__label" for="file-input">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  data-prefix="fas"
+                                  data-icon="upload"
+                                  class="svg-inline--fa fa-upload fa-w-16"
+                                  role="img"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 512 512" >
+                                  <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                                  </path>
+                                </svg>
+                                <span>Upload Image</span></label>
+
+                                
+                                <br><br>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" (click)="saveProduct()">Create Product</button>
+                            </div>
+
+
+                          
+
+
+                        </form>
+
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="">
+                            <table class="table table-hover">
+                             
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" />
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>product Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Current Discount</th>
+                                        <th>Price After Discount</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let obj of store.loadedProducts">
+                                        <td class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" />
+                                            </div>
+                                        </td>
+                                        <td>#{{obj.productId}}</td>
+                                        <td><b>{{obj.productName}}</b></td>
+                                        <td>{{obj.productDesc}}</td>
+                                        <td> <span class="badge rounded-pill alert-danger">{{obj.price}}$</span></td>
+                                        <td >{{store.loadedStoreInfo.currenT_DISCOUNT}}%</td>
+                                        <td *ngIf="store.loadedStoreInfo.currenT_DISCOUNT != 0 && store.loadedStoreInfo.currenT_DISCOUNT != null"> <span class="badge rounded-pill alert-success">{{ (obj.price - (store.loadedStoreInfo.currenT_DISCOUNT/100 * obj.price)) | number : '1.1-2' }}$</span></td>
+                                        <td *ngIf="store.loadedStoreInfo.currenT_DISCOUNT == 0 || store.loadedStoreInfo.currenT_DISCOUNT == null"> <span class="badge rounded-pill alert-success">{{ (obj.price - (store.loadedStoreInfo.currenT_DISCOUNT/100 * obj.price)) | number : '1.1-2' }}$</span></td>
+
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    <button class="dropdown-item" (click)="openUpdate(obj.productId,obj.productName,obj.productDesc,
+                                                    obj.price,obj.sectionId,obj.productImage)">Edit</button>
+                                                    <button class="dropdown-item text-danger" (click)="openDelete(obj.productId)">Delete</button>
+                                                </div>
+                                            </div> <!-- dropdown //end -->
+                                        </td>
+                                    </tr>
+
+                                   
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div> <!-- .col// -->
+                </div> <!-- .row // -->
+            </div> <!-- card body .// -->
+        </div> <!-- card .// -->
+    </section> <!-- content-main end// -->
+   
+    
+
+
+
+    <app-footernav></app-footernav>
+
+
+
+</main>
+
+
+
+<ng-template #CallDelete >
+
+    <h2 mat-dialog-title>Are You Sure That You want to delete The Product ?</h2>
+    
+        <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+        &nbsp;
+        <button class="button-24" mat-button mat-dialog-close="no">No</button>
+        
+</ng-template>
+
+<!-- ~ -->
+
+<ng-template #callUpdate>
+
+    <form class="example-form" [formGroup]="updateform">
+    
+        <div style="font-size: 14px">
+    
+        <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+           <mat-label>Product Name</mat-label>
+           <input type="text" style="height: 17px; border: none;" matInput formControlName="productName" [(ngModel)]="previous_data.productName">
+       </mat-form-field>
+    
+       <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+           <mat-label>Product Description</mat-label>
+            <input type="text" style="height: 17px; border: none;" matInput formControlName="productDesc" [(ngModel)]="previous_data.productDesc">
+           </mat-form-field>
+    
+           <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+               <mat-label>Price</mat-label>
+               <input type="number" style="height: 17px; border: none;" matInput formControlName="price" [(ngModel)]="previous_data.price">
+           </mat-form-field>
+    
+          <!--  <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+               <mat-label>sectionID</mat-label>
+               <input type="number" style="height: 17px; border: none;" matInput formControlName="sectionID" [(ngModel)]="previous_data.sectionID">
+           </mat-form-field> -->
+           
+           
+           
+          
+
+           <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+            <mat-label>sectionName</mat-label>
+           <mat-select formControlName="sectionID" [(ngModel)]="previous_data.sectionID">
+            <mat-option *ngFor="let obj of store.loadedStoreSection" [value]="obj.id">{{obj.sectionName}}</mat-option>
+           </mat-select>
+           </mat-form-field>
+
+           <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="image_Path" [(ngModel)]="previous_data.image_Path" [value]="previous_data.image_Path" #file (change)="UploadImage(file.files)">
+           <label class="file-input__label" for="file-input">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="upload"
+              class="svg-inline--fa fa-upload fa-w-16"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512" >
+              <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+              </path>
+            </svg>
+            <span>Update Image</span></label>
+
+    
+        </div>
+    
+        <br><br>
+       <button class="button-26" (click)="updateProduct()" [mat-dialog-close]="true">Update</button>
+    
+    
+    
+       </form>
+    
+    
+    </ng-template>
+
+
+<!-- ///////// Section ///////// -->
+
+    <ng-template #CallCreateSection>
+
+        <h2 mat-dialog-title>Create New Section</h2>
+    
+        <mat-dialog-content class="mat-typography">
+    
+            <form class="example-form" [formGroup]="createform1">
+    
+                <div style="font-size: 14px">
+    
+                    <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+    
+                        <mat-label>Section Name</mat-label>
+                        <input type="text" style="height: 17px; border: none;" matInput formControlName="sectionName">
+                        <mat-error *ngIf="createform1.controls['sectionName'].hasError('required')">
+                            Section name is <strong>required</strong>
+                        </mat-error>
+    
+                    </mat-form-field>
+    
+                    <br>
+    
+                    <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+    
+                        <mat-label>Description</mat-label>
+                        <input type="text" style="height: 17px; border: none;" matInput formControlName="sectionDesc">
+                        <mat-error *ngIf="createform1.controls['sectionDesc'].hasError('required')">
+                            Description is <strong>required</strong>
+                        </mat-error>
+    
+                    </mat-form-field>
+    
+                    <br>
+    
+                    <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+                        <mat-label>Store Name</mat-label>
+    
+                        <mat-select formControlName="storeID">
+                            <mat-option selected [value]="storeID">{{storeName}}</mat-option>
+                        </mat-select>
+    
+                        <mat-error *ngIf="createform1.controls['storeID'].hasError('required')">
+                            StoreName is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+    
+                </div>
+    
+    
+            </form>
+    
+        </mat-dialog-content>
+    
+        <mat-dialog-actions align="end">
+            <button class="button-28" mat-button mat-dialog-close>Cancel</button>
+            &nbsp;&nbsp;
+            <button class="button-27" mat-button [mat-dialog-close]="true" cdkFocusInitial
+                (click)="saveSection()">Save</button>
+        </mat-dialog-actions>
+    
+    </ng-template>
+    <!-- ~ -->
+    <ng-template #CallDeleteSection>
+
+        <h2 mat-dialog-title>Are You Sure That You want to delete The Section ?</h2>
+    
+        <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+        &nbsp;
+        <button class="button-24" mat-button mat-dialog-close="no">No</button>
+    
+    </ng-template>
+    <!-- ~ -->
+    <ng-template #callUpdateSection>
+
+        <form class="example-form" [formGroup]="updateform1">
+    
+            <div style="font-size: 14px">
+    
+                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                    <mat-label>Store Name</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="sectionName"
+                        [(ngModel)]="previous_data1.sectionName">
+                </mat-form-field>
+    
+                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                    <mat-label>Store Description</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="sectionDesc"
+                        [(ngModel)]="previous_data1.sectionDesc">
+                </mat-form-field>
+    
+    
+            </div>
+    
+            <button class="button-26" (click)="updateSection1()" [mat-dialog-close]="true">Update</button>
+    
+    
+    
+        </form>
+    
+    
+    </ng-template>
+    
+
+
+
+
+
+

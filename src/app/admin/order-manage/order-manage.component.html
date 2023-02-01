@@ -1,0 +1,236 @@
+<app-asidenav></app-asidenav>
+
+<main class="main-wrap">
+
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Order List </h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let obj of order.Counts">
+            
+            <div class="col-lg-4">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                        <div class="text" >
+                            <h6 class="mb-1 card-title">Revenue</h6>
+                            <span>${{order.PriceSum}}</span>
+                            <span class="text-sm">
+                                Shipping fees are not included
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Orders</h6> <span>{{order.loadedOrdersSearch.length}}</span>
+                            <span class="text-sm">
+                                Number Of orders in this period
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Potintial Earning</h6> <span>${{order.PriceSum * (15/100)}}</span>
+                            <span class="text-sm">
+                                Based on 15% commission rate
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card mb-4">
+                  <!--   <header class="card-header">
+                        <div class="row gx-3">
+                            <div class="col-lg-4 col-md-6 me-auto">
+                                <input type="text" placeholder="Search..." class="form-control">
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-6">
+                                <select class="form-select">
+                                    <option>Status</option>
+                                    <option>Active</option>
+                                    <option>Disabled</option>
+                                    <option>Show all</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-6">
+                                <select class="form-select">
+                                    <option>Show 20</option>
+                                    <option>Show 30</option>
+                                    <option>Show 40</option>
+                                </select>
+                            </div>
+                        </div> 
+                    </header> card-header end// --> 
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>name</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Num of Items</th>
+                                        <th>PhoneNumber</th>
+                                        <th>Date</th>
+
+                                        <th class="text-end"> Action </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <!-- 
+
+
+                                    <tr  >
+                                        <td>{{order.loadedOrderDetails.orderId}}</td>
+                                        <td><b>{{order.loadedOrderDetails.userFName}} {{order.loadedOrderDetails.userLName}}</b></td>
+                                        <td>{{order.loadedOrderDetails.priceSum}}$</td>
+                                        <td><span class="badge rounded-pill alert-success">{{order.loadedOrderDetails.orderStatus}}</span></td>
+                                        <td>{{order.loadedOrderDetails.numberOfItems}}</td>
+                                        <td>{{order.loadedOrderDetails.userPhoneNumber}}</td>
+                                        <td>{{order.loadedOrderDetails.orderTime | date:'MMMM d, y, h:mm:ss a z'}}</td>
+
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">View detail</a>
+                                                    <a class="dropdown-item" href="#">Edit info</a>
+                                                    <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+ -->
+
+
+                                    <tr *ngFor="let obj of order.loadedOrdersSearch">
+                                        <td>#{{obj.orderId}}</td>
+                                        <td><b>{{obj.userFName}} {{obj.userLName}}</b></td>
+                                        <td style="max-width:80px;">{{(obj.priceSum - (obj.priceSum * (obj.storeDiscount/100)) - (obj.priceSum * (obj.promoDiscount/100))) | number : '1.1-2'}} $</td>
+                                        <td *ngIf="obj.orderStatus === 'Pending' " > <span class="badge rounded-pill alert-danger">{{obj.orderStatus}}</span></td>
+                                        <td *ngIf="obj.orderStatus === 'Confirmed'   ">  <span class="badge rounded-pill alert-warning" >{{obj.orderStatus}}</span></td>
+                                        <td *ngIf="obj.orderStatus === 'In Delivery'   " > <span class="badge rounded-pill alert-primary" >{{obj.orderStatus}}</span></td>
+                                        <td *ngIf="obj.orderStatus === 'Delivered'   ">  <span class="badge rounded-pill alert-success" >{{obj.orderStatus}}</span></td>
+                                        <td>{{obj.numberOfItems}}</td>
+                                        <td>{{obj.userPhoneNumber}}</td>
+                                        <td>{{obj.orderTime | date:'MMMM d, y, h:mm:ss a z'}}</td>
+
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown"
+                                                    class="btn btn-light rounded btn-sm font-sm"> <i
+                                                        class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" (click)="openUpdate(obj.orderId, obj.orderStatus)" >Edit Status</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <br><br><br><br><br>
+                                </tbody>
+
+                            </table>
+                        </div> <!-- table-responsive //end -->
+                    </div> <!-- card-body end// -->
+                </div> <!-- card end// -->
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="mb-3">Filter by</h5>
+                        <form >
+
+                            <div class="mb-4">
+                                <label for="order_id" class="form-label">Order ID</label>
+                                <input type="text" (change)="OrderFilter($event)" placeholder="Type here"
+                                    class="form-control" id="order_id">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Store Name</label>
+                                <select [formControl]="nStoreId" (change)="Search()"  class="form-select">
+                                    <option value="">Select Store:</option>
+                                    <option *ngFor="let obj of store.allstores" [value]="obj.id">{{obj.storeName}}</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="order_created_date" class="form-label">Start Date</label>
+                                <input  [formControl]="nInStart" (change)="Search()" type="date" placeholder="Type here" class="form-control">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="order_modified_date" class="form-label">End Date</label>
+                                <input [formControl]="nInEnd" (change)="Search()" type="date" placeholder="Type here" class="form-control"
+                                    id="order_modified_date">
+                            </div>
+
+                        </form>
+                    </div>
+                </div> <!-- card end// -->
+            </div>
+        </div>
+
+    </section> <!-- content-main end// -->
+
+    <app-footernav></app-footernav>
+
+</main>
+
+
+<ng-template #callUpdate>
+
+    <form class="example-form" [formGroup]="updateform">
+
+        <div style="font-size: 14px">
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>OrderId</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="Id"
+                    [(ngModel)]="previous_data.Id">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Status</mat-label>
+               <mat-select formControlName="orderStatus" [(ngModel)]="previous_data.orderStatus">
+                <mat-option value="Pending">Pending</mat-option>
+                <mat-option value="Confirmed">Confirmed</mat-option>
+                <mat-option value="In Delivery">In Delivery</mat-option>
+                <mat-option value="Delivered">Delivered</mat-option>
+               </mat-select>
+               </mat-form-field>
+
+        </div>
+
+        <button class="button-26" (click)="updateTestimonial()" [mat-dialog-close]="true">Update</button>
+
+
+
+    </form>
+
+
+</ng-template>

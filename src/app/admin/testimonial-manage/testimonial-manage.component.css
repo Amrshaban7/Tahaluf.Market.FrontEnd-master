@@ -1,0 +1,210 @@
+
+table , tr, td , th { border: none; }
+
+
+
+.button-24 {
+    background: #aa2e2a;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 10px 35px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-24:hover,
+  .button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #aa2e2a;
+  }
+  
+  .button-24:active {
+    opacity: .5;
+  }
+
+  /* ~~~~~~~~~~~~~~~~ */
+
+  .button-25 {
+    background: hwb(190 3% 56%)	;
+    border: 1px solid #42ff71;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 10px 35px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-25:hover,
+  .button-25:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: hwb(190 3% 56%);
+  }
+  
+  .button-25:active {
+    opacity: .5;
+  }
+
+
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+  .button-26 {
+    background: hwb(190 3% 56%)	;
+    border: 1px solid hwb(147 55% 29%);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 5px 25px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-26:hover,
+  .button-26:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: hwb(190 3% 56%);
+  }
+  
+  .button-26:active {
+    opacity: .5;
+  }
+
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+  .button-27 {
+    background: hwb(190 3% 56%)	;
+    border: 1px solid hwb(147 55% 29%);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 5px 25px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-27:hover,
+  .button-27:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: hwb(190 3% 56%);
+  }
+  
+  .button-26:active {
+    opacity: .5;
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~ */
+
+  .button-28 {
+    background: #aa2e2a;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 5px 25px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-28:hover,
+  .button-28:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #aa2e2a;
+  }
+  
+  .button-24:active {
+    opacity: .5;
+  }
+
+  
+  /* ```````````````````````````````````` */
+
+
+
+  
+.text-end :hover :active  ::after {
+    border-radius: 5px;
+    border-color: #088178 ;
+    background-color:#FFFFFF;
+    color:#088178;
+  }

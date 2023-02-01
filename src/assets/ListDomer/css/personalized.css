@@ -1,0 +1,52 @@
+:root {
+  --listdomer-body-bg: #e8f1ff; /* Main Body Background Color */
+  --listdomer-main-font-m: "Poppins", Arial, monospace; /* Main Font Family */
+  --listdomer-main-gbg1: #33c6ff; /* Main Gradient Background Color 1 */
+  --listdomer-main-gbg2: #306be6; /* Main Gradient Background Color 2 */
+  --listdomer-main-gtc: #ffffff; /* Main Gradient Text Color */
+  --listdomer-main-hc: #0ab0fe; /* Main Hover / Active Color */
+  --listdomer-main-hc2: #24b7ff; /* Main Hover / Active Color 2 */
+  --listdomer-main-bc: #bceaff; /* Main Border Color */
+  --listdomer-main-tc: #000000; /* Main Title Color */
+  --listdomer-main-atc: #66686b; /* Main Active Text Color */
+  --listdomer-second-bg: #e6f7ff; /* Second Background Color */
+  --listdomer-headlines-c: #000000; /* Main Headlines Color */
+
+  --listdomer-header-bg: #ffffff; /* Header Background Color */
+  --listdomer-header-tc: #000000; /* Header Text Color */
+
+  --listdomer-sidebar-ic: #a4a8b5; /* Sidebar Input Color */
+  --listdomer-sidebar-tc: #3a3b40; /* Sidebar Text Color */
+  --listdomer-sidebar-ac: #8d919c; /* Sidebar A Tag Color */
+  --listdomer-sidebar-bc: #ececec; /* Sidebar Border Color */
+
+  --listdomer-carousel-bc: #d3d9e8; /* Carousel Border Color */
+  --listdomer-carousel-abc: #33bdfc; /* Carousel Active Border / Background Color */
+
+  --listdomer-widget-c: #7e8086; /* Main Widget Color */
+  --listdomer-widget-ac: #33bdfc; /* Main Widget Active Color */
+
+  --listdomer-content-c: #66686b; /* Main Content Color */
+  --listdomer-content-ac: #8d919c; /* Main Content A Tag Color */
+  --listdomer-content-acc: #3a3b40; /* Main Content Active Color */
+
+  --listdomer-listdom-single-ic: #33bdfc; /* Listdom Icon Color */
+  --listdomer-listdom-single-ic2: #2b93ff; /* Listdom Icon Color 2 */
+  --listdomer-listdom-single-sc: #fecc39; /* Listdom Star Color */
+  --listdomer-listdom-single-ac: #a4a8b5; /* Listdom Active Color */
+  --listdomer-listdom-single-sb-bg: #000000; /* Listdom Slider Button Background */
+  --listdomer-listdom-single-sb-c: #ffffff; /* Listdom Slider Button Color */
+
+  --listdomer-footer-bg: #1c1c1c; /* Footer Background Color */
+  --listdomer-footer-tc: #ffffff; /* Footer Title Color */
+  --listdomer-footer-fbg: #000000; /* Footer Frame Background Color */
+  --listdomer-footer-ac: #747577; /* Footer Active Color */
+}
+
+.listdomer-color-m-txt{color: #33c6ff !important;}
+.listdomer-color-m-bg{background-color: #33c6ff !important;}
+.listdomer-color-m-brd{border-color: #33c6ff !important;}
+.listdomer-color-s-txt{color: #306be6 !important;}
+.listdomer-color-s-bg{background-color: #306be6 !important;}
+.listdomer-color-s-brd{border-color: #306be6 !important;}
+.listdomer-font-m{font-family: "Poppins", Arial, monospace;}

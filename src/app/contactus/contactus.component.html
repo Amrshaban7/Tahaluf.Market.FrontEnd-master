@@ -1,0 +1,201 @@
+<!-- -->
+
+<app-navbar></app-navbar>
+
+
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a [routerLink]="['/']" rel="nofollow">Home</a>
+                <span></span> Pages
+                <span></span> Contact us
+            </div>
+        </div>
+    </div>
+    <section class="hero-2 bg-green">
+        <div class="hero-content">
+            <div class="container">
+                <div class="text-center">
+                    <h4 class="text-brand mb-20">Get in touch</h4>
+                    <h1 class="mb-20 wow fadeIn animated font-xxl fw-900">
+                        Let's Talk About <br>Your <span class="text-style-1">Idea</span>
+                    </h1>
+                    <p class="w-50 m-auto mb-50 wow fadeIn animated">Feel free to contact us if you have any suggestions or issues, we would love to hear from you<br/>We will always try to reply as soon as possible.</p>
+                    <p class="wow fadeIn animated">
+                        <a href="tel:{{websitedata.websiteData.phoneNumber}}" class="btn btn-brand btn-lg font-weight-bold text-white border-radius-5 btn-shadow-brand hover-up"
+                        >Call Us Directly</a>
+                        <a href="mailto:{{websitedata.websiteData.email}}"
+                            class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white ml-15 border-radius-5 btn-shadow-brand hover-up">
+                            Email Us Directly</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-border pt-50 pb-50">
+        <div class="container" >
+            <div class="row justify-content-center mb-50" style="background-color:white ;">
+                <img style="max-height:500px;max-width:500px" src="../../assets/Evera/imgs/theme/36431-support.gif">
+
+            </div>
+<!--         
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="mb-15 text-brand">Office</h4>
+                    205 North Michigan Avenue, Suite 810<br>
+                    Chicago, 60601, USA<br>
+                    <abbr title="Phone">Phone:</abbr> (123) 456-7890<br>
+                    <abbr title="Email">Email: </abbr><a href="http://wp.alithemes.com/cdn-cgi/l/email-protection"
+                        class="__cf_email__"
+                        data-cfemail="02616d6c766361764247746370632c616d6f">[email&#160;protected]</a><br>
+                    <a
+                        class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i
+                            class="fi-rs-marker mr-10"></i>View map</a>
+                </div> -->
+                <div class="row justify-content-around">
+
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h4 class="mb-15 text-brand">Phone Number</h4>
+                        +962 {{websitedata.websiteData.phoneNumber}}<br>
+                        <a
+                            href="tel:{{websitedata.websiteData.phoneNumber}}"
+                            class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><span
+                                class="material-icons md-call"></span> Call Us</a>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h4 class="mb-15 text-brand">Email</h4>
+                        {{websitedata.websiteData.email}}<br>
+                        <a
+                            href="mailto:{{websitedata.websiteData.email}}"
+                            class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><span
+                                class="material-icons md-mail"></span> Send Email</a>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h4 class="mb-15 text-brand">Hotline Number</h4>
+                        {{websitedata.websiteData.hotline}}<br>
+                        <a href="tel:{{websitedata.websiteData.hotline}}"
+                            class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><span
+                                class="material-icons md-support_agent"></span> Contact Support</a>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-50 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-10 m-auto">
+                    <div class="contact-from-area padding-20-row-col wow FadeInUp">
+                        <h3 class="mb-10 text-center">Drop Us a Line</h3>
+                        <p class="text-muted mb-30 text-center font-sm">Send us a contact message through our website.</p>
+
+                        <form class="contact-form-style text-center" id="contact-form" [formGroup]="createform"
+                            ngNativeValidate>
+                            <div class="row">
+
+                                <!--   <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input name="name" placeholder="Full Name" type="text" formControlName="fullname" required>
+                                        </div>
+                                    </div>
+ -->
+                                <mat-form-field id="we" class="col-lg-6 col-md-6" floatLabel="never" color="primary" >
+
+                                    <mat-label>Full Name</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput
+                                        formControlName="fullname">
+                                    <mat-error *ngIf="createform.controls['fullname'].hasError('required')">
+                                        name is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+
+                                <!--  <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input name="email" placeholder="Your Email" type="email" formControlName="email" required>
+                                        </div>
+                                    </div> -->
+
+                                <mat-form-field class="col-lg-6 col-md-6" floatLabel="never" color="primary">
+
+                                    <mat-label>Email</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput
+                                        formControlName="email">
+                                    <mat-error *ngIf="createform.controls['email'].hasError('required')">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="createform.controls['email'].hasError('pattern')">
+                                        Please inter a correct <strong>Email</strong>
+                                    </mat-error>
+
+                                    
+
+                                </mat-form-field>
+
+                                <!-- <div class="col-lg-12 col-md-12">
+                                        <div class="input-style mb-20">
+                                            <input name="subject" placeholder="Subject" type="text" formControlName="subject" required>
+                                        </div>
+                                    </div>
+ -->
+
+ <br>
+                                <mat-form-field style="width:100%" class="col-lg-6 col-md-6"  floatLabel="never" color="primary">
+
+                                    <mat-label>Subject</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput
+                                        formControlName="subject" >
+                                    <mat-error *ngIf="createform.controls['subject'].hasError('required')">
+                                        Subject is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+
+
+                                <br>
+                                
+                                <div class="col-lg-12 col-md-12">
+
+                                   <!--  <div class="textarea-style mb-30" hintLabel="Min 100 characters">
+                                        <textarea name="message" placeholder="Message" formControlName="message" #input minlength="100"></textarea>
+                                    
+                                        <mat-hint align="end">{{input.value?.length || 0}}/120</mat-hint>
+                                    </div> -->
+
+                                    <div>
+                                    <mat-form-field class="test" style="width:100%" class="col-lg-6 col-md-6" floatLabel="never" color="primary" hintLabel="Min 30 characters">
+                                        <mat-label>Message</mat-label>
+                                        <textarea matInput #input minlength="30" maxlength="80" style="height: 17px; border: none;" formControlName="message"></textarea>
+                                        <mat-hint align="end">{{input.value?.length || 0}}/80</mat-hint>
+                                        <mat-error *ngIf="createform.controls['message'].hasError('required')">
+                                            Message is <strong>required</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="createform.controls['message'].hasError('minLength')">
+                                            At least 30<strong>Character</strong>
+                                        </mat-error>
+                                      </mat-form-field>
+                                      
+                                    </div>
+                                    
+
+                                    <button class="submit submit-auto-width" type="submit" (click)=" saveProduct()">Send
+                                        message</button>
+
+                                </div>
+                            </div>
+                        </form>
+
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+
+<app-footer></app-footer>

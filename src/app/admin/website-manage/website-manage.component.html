@@ -1,0 +1,113 @@
+
+<app-asidenav></app-asidenav>
+
+<main class="main-wrap">
+
+
+
+
+
+    <section class="content-main">
+        <div class="row">
+            <div class="col-6">
+                <div class="content-header">
+                    <h2 class="content-title">Manage Website Data</h2>
+                   
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        
+                        <form class="example-form" [formGroup]="updateform">
+                      
+                            <div class="row">
+
+                            <div class="col-md-3">
+                                <h6>1. Home info</h6>
+                            </div>
+
+                            <div class="col-md-9">
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>Website Name</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput formControlName="websiteName"
+                                        [(ngModel)]="website.websiteData.websiteName">
+                                </mat-form-field>
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput formControlName="email"
+                                        [(ngModel)]="website.websiteData.email">
+                                </mat-form-field>
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>Phone Number</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput formControlName="phoneNumber"
+                                        [(ngModel)]="website.websiteData.phoneNumber">
+                                </mat-form-field>
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>Hot-Line</mat-label>
+                                    <input type="text" style="height: 17px; border: none;" matInput formControlName="hotline"
+                                        [(ngModel)]="website.websiteData.hotline">
+                                </mat-form-field>
+
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                      
+                        <hr class="mb-4 mt-0">
+                      
+                        <div class="row">
+                          
+                            <div class="col-md-3">
+                                <h6>2. About Us</h6>
+                            </div>
+
+                            <div class="col-md-9">
+
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>AboutUs Head</mat-label>
+                                    <textarea type="text" style="height: 17px; border: none;" matInput formControlName="aboutUsHead"
+                                        [(ngModel)]="website.websiteData.aboutUsHead"></textarea>
+                                </mat-form-field>
+
+                                
+
+                                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                                    <mat-label>AboutUs Body</mat-label>
+                                    <textarea type="text" style="height: 17px; border: none;" matInput formControlName="aboutUsBody"
+                                        [(ngModel)]="website.websiteData.aboutUsBody"></textarea>
+                                </mat-form-field>
+
+
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+
+                        <br>
+
+                        <div style="float:right;">
+                            <button class="btn btn-md rounded font-sm hover-up" (click)="openUpdate(website.websiteData.id, website.websiteData.websiteName,website.websiteData.email,website.websiteData.phoneNumber,
+                            website.websiteData.hotline, website.websiteData.aboutUsHead , website.websiteData.aboutUsBody)" >Update</button>
+                        </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- content-main end// -->
+
+
+
+    
+    <app-footernav></app-footernav>
+
+
+
+</main>

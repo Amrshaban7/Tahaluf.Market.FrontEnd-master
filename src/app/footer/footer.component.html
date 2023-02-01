@@ -1,0 +1,90 @@
+
+<footer class="main">
+    <section class="newsletter p-30 text-white wow fadeIn animated">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-md-3 mb-lg-0">
+                    <div class="row align-items-center">
+                        <div class="col flex-horizontal-center">
+                            <img class="icon-email" src="../../assets/Evera/imgs/theme/icons/icon-email.svg" alt="">
+                            <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
+                        </div>
+                        <div class="col my-4 my-md-0 des">
+                            <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>20% off coupon valid for 5 days!</strong></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <!-- Subscribe Form -->
+                    <form class="form-subcriber d-flex wow fadeIn animated">
+                        <input [formControl]="emailBox"type="email" class="form-control bg-white font-small" placeholder="Enter your email">
+                        <button class="btn bg-dark text-white"  (click)="submitEmail()">Subscribe</button>
+                    </form>
+                    <!-- End Subscribe Form -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding footer-mid">
+        <div class="container pt-15 pb-20">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="widget-about font-md mb-md-5 mb-lg-0">
+                        <div class="logo logo-width-1 wow fadeIn animated">
+                            <a href="index.html"><img src="../../assets/Evera/imgs/theme/logo.svg" alt="logo"></a>
+                        </div>
+                        <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                        <p class="wow fadeIn animated">
+                            <strong>Email: </strong>{{websitedata.websiteData.email}}
+                        </p>
+                        <p class="wow fadeIn animated">
+                            <strong>Phone: </strong>+962 {{websitedata.websiteData.phoneNumber}}
+                        </p>
+                        <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">This web application is made to meet the requirements for the final project of the Tahaluf Al Emarat Technical Solutions full-stack development course.</h5>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h5 class="widget-title wow fadeIn animated">Pages</h5>
+                    <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+                        <li><a [routerLink]="['/']">Home</a></li>
+                        <li><a [routerLink]="['/aboutus']">About Us</a></li>
+                        <li><a [routerLink]="['/contactus']">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-3">
+                    <h5 class="widget-title wow fadeIn animated">User Dashboard</h5>
+                    <ul class="footer-list wow fadeIn animated">
+                        <li><a [routerLink]="['/Dashboard']">Sign In</a></li>
+                        <li><a [routerLink]="['/Dashboard']">My Orders</a></li>
+                        <li><a [routerLink]="['/Dashboard']">Profile Settings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="widget-title wow fadeIn animated">Online Payment</h5>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                            <p class="mb-20 wow fadeIn animated">Online payments on this website are done through PayPal.</p>
+                            <img height="50%" class="wow fadeIn animated" src="../../assets/Evera/imgs/theme/paypal.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container pb-20 wow fadeIn animated">
+        <div class="row">
+            <div class="col-12 mb-20">
+                <div class="footer-bottom"></div>
+            </div>
+            <div class="col-lg-6">
+                <p class="float-md-left font-sm text-muted mb-0">&copy; {{Date.getFullYear()}}, <strong class="text-brand">{{websitedata.websiteData.websiteName}}</strong> - Market Finder Web Application Project </p>
+            </div>
+            <div class="col-lg-6">
+                <p class="text-lg-end text-start font-sm text-muted mb-0">
+                    Designed by <a href="https://www.linkedin.com/in/hisham-hawari/" target="_blank">Hisham Howari</a> & <a href="https://jo.linkedin.com/in/amr-shaban-3464691b2" target="_blank">Amr Shaban</a>
+                </p>
+            </div>
+        </div>
+    </div>
+  </footer>
+  

@@ -1,0 +1,419 @@
+
+
+
+<app-asidenav></app-asidenav>
+
+
+<main class="main-wrap">
+
+
+    <section class="content-main">
+
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Dashboard </h2>
+                <p>Whole data about your business here</p>
+            </div>
+             <div>
+                <button class="btn btn-primary" mat-button (click)="openCreate()"> <i class="text-muted material-icons md-post_add"></i>Create report</button>
+            </div>
+            
+        </div>
+
+        <div class="row" *ngFor="let obj of order.Counts">
+            
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                        <div class="text" >
+                            <h6 class="mb-1 card-title">Revenue</h6>
+                            <span>${{order.PriceSum | number : '1.1-2'}}</span>
+                            <span class="text-sm">
+                                Shipping fees are not included
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Orders</h6> <span>{{obj.numberOfOrders}}</span>
+                            <span class="text-sm">
+                                Number Of orders
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Products</h6> <span>{{obj.numberOfProduct}}</span>
+                            <span class="text-sm">
+                                In <strong>{{obj.numberOfCategories}}</strong> Categories
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Potintial Earning</h6> <span>${{order.PriceSum * (15/100) | number : '1.1-2'}}</span>
+                            <span class="text-sm">
+                                Based on 15% commission rate.
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card mb-4">
+                    <article class="card-body">
+                        <h5 class="card-title">Sale statistics</h5>
+                        <div>
+                            <canvas id="canvas" width="800" height="300">{{order.chart}}</canvas>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="row">
+
+                    <div class="col-lg-5">
+                        <div class="card mb-4">
+                            <article class="card-body">
+                                <h5 class="card-title">New Users</h5>
+                                <div class="new-member-list">
+                                    <div *ngFor="let user of userdata.recentUsers" class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="d-flex align-items-center">
+                                            <img src="../../../assets/Images/{{user.image_path}}" alt="" class="avatar">
+                                            <div>
+                                                <h6>{{user.fName}} {{user.lName}}</h6>
+                                                <p class="text-muted font-xs">
+                                                    {{user.phoneNumber}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <a href="mailto:{{user.email}}" class="btn btn-xs"><i class="material-icons md-mail"></i> Send Email</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="card mb-4">
+                            <article class="card-body">
+                                <h5 class="card-title">Promo Codes Ending Soon</h5>
+                                <ul class="verti-timeline list-unstyled font-sm">
+
+                                    <li *ngFor="let code of promocode.loadedSoonestPromoCode" class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-local_atm"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6><span>{{code.code}} <br/> -{{code.discount}}%</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>
+                                                   Start Date: {{code.start_Time | date:'mediumDate'}} <br/>
+                                                   End Date: {{code.end_Time | date:'mediumDate'}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <div class="card mb-4">
+            <header class="card-header">
+                <h4 class="card-title">Latest orders</h4>
+            </header>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        <table class="table align-middle table-nowrap mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col" class="text-center">
+                                        <div class="form-check align-middle">
+                                            <input class="form-check-input" type="checkbox" id="transactionCheck01">
+                                            <label class="form-check-label" for="transactionCheck01"></label>
+                                        </div>
+                                    </th>
+                                    <th class="align-middle" scope="col">Order ID</th>
+                                    <th class="align-middle" scope="col">Billing Name</th>
+                                    <th class="align-middle" scope="col">Date</th>
+                                    <th class="align-middle" scope="col">Total</th>
+                                    <th class="align-middle" scope="col">Order Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let obj of order.loadedRecentOrders">
+                                    <td class="text-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="transactionCheck02">
+                                            <label class="form-check-label" for="transactionCheck02"></label>
+                                        </div>
+                                    </td>
+                                    <td><a  class="fw-bold">#{{obj.orderId}}</a> </td>
+                                    <td>{{obj.userFName}} {{obj.userLName}}</td>
+                                    <td>
+                                        {{obj.orderTime | date:'MMMM d, y, h:mm:ss a'}}
+                                    </td>
+                                    <td>
+                                        ${{obj.priceSum}}
+                                    </td>
+                                    <td>
+                                        <span *ngIf="obj.orderStatus === 'Pending' " class="badge rounded-pill alert-danger">{{obj.orderStatus}}</span>
+                                        <span *ngIf="obj.orderStatus === 'Confirmed' " class="badge rounded-pill alert-warning">{{obj.orderStatus}}</span>
+                                        <span *ngIf="obj.orderStatus === 'In Delivery' " class="badge rounded-pill alert-primary">{{obj.orderStatus}}</span>
+                                        <span *ngIf="obj.orderStatus === 'Delivered' " class="badge rounded-pill alert-success">{{obj.orderStatus}}</span>
+                                    </td>
+                                </tr>
+                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- table-responsive end// -->
+            </div>
+        </div>
+    </section> <!-- content-main end// -->
+
+    
+    
+
+    
+<app-footernav></app-footernav>
+
+
+
+</main>
+
+
+
+
+<ng-template #CallCreate>
+
+
+    <div class="col-md-12" style="border:0; padding-bottom: 0px; text-align: center;">
+        <div class="card mb-8" style="border:0; padding-bottom: 0px;">
+            <div class="card-body" style="border:0; padding-bottom: 0px;">
+                <h5 class="mb-3" style="margin-right:600px;">Filter by <i class="text-muted material-icons md-sort"></i></h5>
+               
+
+                <form  style="display:inline-flex;">
+
+                    <div class="mb-4" style="padding-right:100px;">
+                        <label class="form-label">Store Name</label>
+                        <select [formControl]="nStoreId" (change)="Search()"  class="form-select">
+                            <option value="">Select Store:</option>
+                            <option *ngFor="let obj of store.allstores" [value]="obj.id">{{obj.storeName}}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4" style="padding-right:100px;">
+                        <label for="order_created_date" class="form-label">Start Date</label>
+                        <input  [formControl]="nInStart" (change)="Search()" type="date" placeholder="Type here" class="form-control">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="order_modified_date" class="form-label">End Date</label>
+                        <input [formControl]="nInEnd" (change)="Search()" type="date" placeholder="Type here" class="form-control"
+                            id="order_modified_date">
+                    </div>
+
+                </form>
+            </div>
+        </div> <!-- card end// -->
+    </div>
+    
+
+    <section class="content-main" id="print-section">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Report</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card" >
+                    <header class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                                <span>
+                                    <i class="material-icons md-calendar_today"></i> <b> {{myDate | date: 'EEEE, MMMM d, y , h:mm a' }}</b>
+                                </span> <br>
+                                <small class="text-muted"></small>
+                            </div>
+                            <div class="col-lg-6 col-md-6 ms-auto text-md-end">                                   
+                                <button (click)="makePdf()" class="btn btn-primary"> <i class="icon material-icons md-cloud_download mr-5"></i>Save PDF</button>
+                                <button class="btn btn-secondary print ms-2" (click)="print()" ><i class="icon material-icons md-print mr-5"></i>Print</button>
+                            </div>
+                        </div>
+                    </header> <!-- card-header end// -->
+                    <div class="card-body" #content >
+                        <div class="receipt-content">
+                            <div class="container bootstrap snippets bootdey">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="invoice-wrapper">
+                                            <div class="intro">
+                                                Hi <strong>{{auth.currentUserData.fName}} {{auth.currentUserData.lName}}</strong>,
+                                                <br>
+                                                This is the Report for the  <strong>Data</strong> between
+                                            </div>
+
+                                            <br><br>
+                
+                                            <div class="payment-info">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <span>Start Date:</span><br>
+                                                        <strong>{{order.StartDate}}</strong>
+                                                    </div>
+                                                    <div class="col-sm-6 text-end">
+                                                        <span>End Date:</span><br>
+                                                        <strong>{{order.EndDate}}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+                                            <br>
+                
+                                           <!--  <div class="payment-details" *ngIf="order.StoreName != null && order.StoreName != 0">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <span>Client</span>
+                                                        <strong>
+                                                            {{store.allstores.storeName}}
+                                                        </strong>
+                                                        <p>
+                                                            989 5th Avenue <br>
+                                                            City of monterrey <br>
+                                                            55839 <br>
+                                                            USA <br>
+                                                            <a href="#">
+                                                                jonnydeff@gmail.com
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-end">
+                                                        <span>Payment To</span>
+                                                        <strong>
+                                                            Juan fernando arias
+                                                        </strong>
+                                                        <p>
+                                                            344 9th Avenue <br>
+                                                            San Francisco <br>
+                                                            99383 <br>
+                                                            USA <br>
+                                                            <a href="#">
+                                                                juanfer@gmail.com
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                
+                                            <div class="line-items">
+                                                <div class="headers clearfix">
+                                                    <div class="row" style="color: #A9B0BB; font-size: 13px; letter-spacing: .3px; border-bottom: 2px solid #EBECEE; padding-bottom: 4px;">
+                                                        <div class="col-md-3">Order Id</div>
+                                                        <div class="col-md-2">Quantity</div>
+                                                        <div class="col-md-3">Date</div>
+                                                        <div class="col-md-4 text-end">Amount</div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="items" style="font-family: Lato, sans-serif; font-size: 14px;  font-style: normal;  font-weight: 400;    line-height: 1.5; color: #4f5d77;">
+                                                    <div class="row item" *ngFor="let obj of order.loadedOrdersSearch">
+                                                        <div class="col-md-3 desc">
+                                                            #{{obj.orderId}}
+                                                        </div>
+                                                        <div class="col-md-2 qty">
+                                                            {{obj.numberOfItems}}
+                                                        </div>
+
+                                                        <div class="col-md-3 qty">
+                                                            {{obj.orderTime | date:'MMMM d, y, h:mm a'}}
+                                                        </div>
+
+                                                        <div class="col-md-4 amount text-end">
+                                                            ${{(obj.priceSum - (obj.priceSum * (obj.storeDiscount/100)) - (obj.priceSum * (obj.promoDiscount/100))) | number : '1.1-2'}}
+                                                        </div>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <hr>
+                                                <br>
+                                                
+                                                <div class="total text-end" *ngFor="let obj of order.Counts" style="font-family: Lato, sans-serif; font-size: 14px; font-style: normal; font-weight: 40; line-height: 1.5; color: #4f5d77;">
+                                                  
+                                                    <strong style="float:left;" class="extra-notes">Extra Notes</strong><br>
+                                                    <p class="extra-notes" style="float:left; max-width:350px;text-align: left;"> 
+                                                        This is a Report for the Orders happend between selected dates,
+                                                        Only Admins Can View and Download it.
+                                                    </p>
+
+                                                   
+                                                    <div class="field">
+                                                        Number of Orders  <span style="font-weight:700;">{{order.loadedOrdersSearch.length}}</span>
+                                                    </div>
+                                                    
+                                                    <div class="field grand-total">
+                                                        Total  <span><strong style="color:green">${{order.PriceSum | number : '1.1-2'}}</strong></span>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                        <div class="footer">
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- card-body end// -->
+                </div> <!-- card end// -->
+            </div>
+        </div>
+    </section>
+
+    <!-- <mat-dialog-actions align="end">
+        <button class="button-28" mat-button mat-dialog-close>Cancel</button>
+        &nbsp;&nbsp;
+        <button class="button-27" mat-button [mat-dialog-close]="true" cdkFocusInitial
+            >Save</button>
+    </mat-dialog-actions> -->
+
+</ng-template>
+

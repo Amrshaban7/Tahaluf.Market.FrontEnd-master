@@ -1,0 +1,288 @@
+<script src="../../assets/Map/js/jquery-3.6.0.js"></script>
+<script src="../../assets/Map/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="../../assets/Map/js/popper.min.js"></script>
+<script src="../../assets/Map/js/bootstrap.min.js"></script>
+<script src="../../assets/Map/js/jquery.mmenu.all.js"></script>
+<script src="../../assets/Map/js/ace-responsive-menu.js"></script>
+<script src="../../assets/Map/js/bootstrap-select.min.js"></script>
+<script src="../../assets/Map/js/snackbar.min.js"></script>
+<script src="../../assets/Map/js/simplebar.js"></script>
+<script src="../../assets/Map/js/parallax.js"></script>
+<script src="../../assets/Map/js/scrollto.js"></script>
+<script src="../../assets/Map/js/jquery-scrolltofixed-min.js"></script>
+<script src="../../assets/Map/js/jquery.counterup.js"></script>
+<script src="../../assets/Map/js/wow.min.js"></script>
+<script src="../../assets/Map/js/progressbar.js"></script>
+<script src="../../assets/Map/js/slider.js"></script>
+<script src="../../assets/Map/js/timepicker.js"></script>
+<!-- Google Maps --> 
+<script src="../../assets/Map/https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM&callback=initMap"></script>
+<script src="../../assets/Map/js/infobox.min.js"></script>
+<script src="../../assets/Map/js/markerclusterer.js"></script>
+<script src="../../assets/Map/js/maps.js"></script>
+<!-- Custom script for all pages --> 
+<script src="../../assets/Map/js/script.js"></script>
+
+<app-navbar></app-navbar>
+
+<div class="body_content">
+  <!-- Listing Grid View -->
+  <section id="feature-property" class="our-listing-list pt0 pb0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="listing_sidebar dn db-lg">
+            <div class="sidebar_content_details style3">
+              <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+              <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0">
+                <div class="sidebar_advanced_search_widget">
+                  <h4 class="mb25">Advanced Search <a class="filter_closed_btn float-right" href="#"><small>Hide Filter</small> <span class="flaticon-close"></span></a></h4>
+                  <ul class="sasw_list style2 mb0">
+                    <li class="search_area">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="What are you looking for">
+                        </div>
+                    </li>
+
+                    <li>
+                      <div class="sidebar_range_slider mb30 mt70">
+                      <input class="range-example-km mb20" value="50" type="text" style="display: none;"><div class="asRange"><div class="asRange-bar"></div><div class="asRange-pointer asRange-pointer-1" tabindex="0" style="left: 33.3333%;"><span class="asRange-tip">50 km</span></div><span class="asRange-selected" style="left: 0px; width: 33.3333%;"></span><div class="asRange-scale"><ul class="asRange-scale-lines"><li class="asRange-scale-grid" style="left: 0%;"></li><li style="left: 5%;"></li><li style="left: 10%;"></li><li style="left: 15%;"></li><li style="left: 20%;"></li><li class="asRange-scale-inlineGrid" style="left: 25%;"></li><li style="left: 30%;"></li><li style="left: 35%;"></li><li style="left: 40%;"></li><li style="left: 45%;"></li><li class="asRange-scale-grid" style="left: 50%;"></li><li style="left: 55%;"></li><li style="left: 60%;"></li><li style="left: 65%;"></li><li style="left: 70%;"></li><li class="asRange-scale-inlineGrid" style="left: 75%;"></li><li style="left: 80%;"></li><li style="left: 85%;"></li><li style="left: 90%;"></li><li style="left: 95%;"></li><li class="asRange-scale-grid" style="left: 100%;"></li></ul><ul class="asRange-scale-values"><li style="left: 0%;"><span>0</span></li><li style="left: 50%;"><span>75</span></li><li style="left: 100%;"><span>150</span></li></ul></div></div>
+                      <p class="mt20">Radius around selected destination</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="small_dropdown2">
+                          <div id="prncgs2" class="btn dd_btn">
+                            <span>Price</span>
+                            <label for="exampleInputEmail2"><span class="fa fa-angle-down"></span></label>
+                          </div>
+                          <div class="dd_content2">
+                            <div class="pricing_acontent">
+                            <div class="addui-slider addui-slider-horizontal addui-slider-isrange mt30" guid="08b93c44-b578-40f3-9eb3-cfaed21a580a"><input class="addui-slider-input" type="hidden" name="" value="150,692"><div class="addui-slider-track"><div class="addui-slider-range" style="left: 15%; width: 54.2%;"></div><div class="addui-slider-handle addui-slider-handle-l" style="left: 15%;"><div class="addui-slider-value"><span style="font-size: 14px">$150</span></div></div><div class="addui-slider-handle addui-slider-handle-h" style="left: 69.2%;"><div class="addui-slider-value"><span style="font-size: 14px">$692</span></div></div></div></div>
+                            </div>
+                          </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="ui_kit_checkbox sidebar_tag">
+                        <h4 class="title">Tags</h4>
+                        <div class="wrapper">
+                                  <ul>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckCredit3">
+                                <label class="custom-control-label" for="customCheckCredit3">Accepts Credit Cards</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckSmoking3">
+                                <label class="custom-control-label" for="customCheckSmoking3">Smoking Allowed</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckBikeP3">
+                                <label class="custom-control-label" for="customCheckBikeP3">Bike Parking</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckStreet3">
+                                <label class="custom-control-label" for="customCheckStreet3">Street Parking</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckWireless3">
+                                <label class="custom-control-label" for="customCheckWireless3">Wireless Internet</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckAlco3">
+                                <label class="custom-control-label" for="customCheckAlco3">Alcohol</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckPet3">
+                                <label class="custom-control-label" for="customCheckPet3">Pet Friendly</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckCredit4">
+                                <label class="custom-control-label" for="customCheckCredit4">Accepts Credit Cards</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckSmoking4">
+                                <label class="custom-control-label" for="customCheckSmoking4">Smoking Allowed</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckBikeP4">
+                                <label class="custom-control-label" for="customCheckBikeP4">Bike Parking</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckStreet4">
+                                <label class="custom-control-label" for="customCheckStreet4">Street Parking</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckWireless4">
+                                <label class="custom-control-label" for="customCheckWireless4">Wireless Internet</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckAlco4">
+                                <label class="custom-control-label" for="customCheckAlco4">Alcohol</label>
+                              </div>
+                                    </li>
+                                    <li>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheckPet4">
+                                <label class="custom-control-label" for="customCheckPet4">Pet Friendly</label>
+                              </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                    </li>
+                    <li>
+                      <div class="search_option_button text-center mt25">
+                          <button type="submit" class="btn btn-block btn-thm mb15">Search</button>
+                          <a class="tdu fz14" href="#">Reset Filter</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="sidebar_switch mobile_style dn db-lg mt30 mb0">
+            <div>
+              <span class="fa fa-filter filter_open_btn"> Show Filter</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5">
+          <div class="half_map_area_content" style="">
+            <div class="row mt25">
+              <form class="listing_page_v9">
+                <div class="form-row align-items-center">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form_input_dd mb30-767">
+                        <div class="input-group">
+                        <input type="text" class="form-control" [formControl]="searchBar" (change)="searchMarkets()" placeholder="What are you looking for?">
+                      </div>
+                      </div>
+                    </div>
+
+                </div>
+              </form>
+            </div>
+            <div class="row mt25 mb25">
+              <button type="submit" class="btn" (click)="locateNearest()">Locate Nearest Market <span class="flaticon-loupe"></span></button>
+            </div>
+            <div class="row">
+
+              <div *ngFor="let market of marketMap.markets" class="col-lg-12" >
+                <div class="feat_property list">
+                  <div class="thumb" (click)="loadMarket(market.id)">
+                    <img src="../../assets/Images/{{market.imagE_PATH}}"/>
+                  </div>
+                  <div class="details">
+                    <div class="tc_content" (click)="loadMarket(market.id)">
+                      <h4>{{market.marketName}}</h4>
+                      <p>{{market.marketDesc}}</p>
+                      <ul class="prop_details mb0 mt15">
+                        <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{market.location}}</a></li>
+                      </ul>
+                    </div>
+                    <div class="fp_footer">
+                      <ul class="fp_meta float-left mb0" (click)="loadMarket(market.id)">
+                        <li class="list-inline-item"><a><img src="../../assets/Map/images/icons/icon8.svg" alt="icon3.svg"></a></li>
+                        <li class="list-inline-item"><a>{{market.marketType}}</a></li>
+                      </ul>
+                      <ul class="fp_meta float-right mb0">
+                        <li class="list-inline-item"><a (click)="locateMarket(market.id)">Find On Map <span class="flaticon-zoom"></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div class="col-lg-12 mb30">
+                <div class="mbp_pagination mt10">
+                  <div class="new_line_pagination text-center">
+                    <p>Showing  {{marketMap.markets.length}} Results</p>
+                    <div class="pagination_line"></div>
+                    <a class="pagi_btn text-thm" (click)="this.marketMap.loadAllmarkets()">Reset Filter</a>
+                  </div>
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-7">
+          <div class="half_map_area">
+            <div class="home_two_map">
+
+              <!--MAP START-->
+              <google-map  (mapClick)="click($event)"
+                    height="850px"
+                    width="100%"
+                    [zoom]="zoom"
+                    [center]="marketMap.center"
+                    [options]="options"
+                    >  
+
+         
+
+
+                  <map-marker
+                    #markerElem
+                    *ngFor="let marker of marketMap.marketMarkers"
+                    [position]="marker.position"
+                    [label]="marker.label"
+                    [title]="marker.title"
+                    [options]="marker.options"
+                    [id]="marker.id"
+                    (mapClick)="openInfo(marker.id)"
+                    >
+            
+                    </map-marker>
+
+                  <map-info-window>{{ infoContent }}</map-info-window>
+                  
+                  </google-map>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- 
+<button (click)="zoomIn()">Zoom in</button>
+<button (click)="zoomOut()">Zoom out</button>
+<button (click)="logCenter()">Log center</button>
+<button (click)="addMarker()">Add marker</button>
+ -->

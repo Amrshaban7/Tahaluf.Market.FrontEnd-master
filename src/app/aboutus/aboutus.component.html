@@ -1,0 +1,296 @@
+
+<app-navbar></app-navbar>
+
+<main class="main single-page">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a [routerLink]="['/']" rel="nofollow">Home</a>
+                <span></span> Pages
+                <span></span> About us
+            </div>
+        </div>
+    </div>
+    <section class="section-padding">
+        <div class="container pt-25">
+            <div class="row">
+                <div class="col-lg-6 align-self-center mb-lg-0 mb-4">
+                    <h6 class="mt-0 mb-15 text-uppercase font-sm text-brand wow fadeIn animated">{{websitedata.websiteData.websiteName}}</h6>
+                    <h1 class="font-heading mb-40">
+                        {{websitedata.websiteData.aboutUsHead}}
+                    </h1>
+                    <p>{{websitedata.websiteData.aboutUsBody}}</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../../assets/Evera/imgs/page/about-1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="team" class="pt-25 wow fadeIn animated">
+        <div class="container">
+            <div class="row mb-50 align-items-center">
+                <div class="col-md-6">
+                    <h6 class="mt-0 mb-15 text-uppercase font-sm text-brand wow fadeIn animated">Our Team</h6>
+                    <h2 class="mb-15 wow fadeIn animated">Project Team Members</h2>
+                    <p class="text-grey-3 wow fadeIn animated">Team members for the final project implementation for the full-stack development course.</p>
+                </div>
+            </div>
+            <div class="position-relative">
+                <div class="row justify-content-around wow fadeIn animated">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="blog-card border-radius-10 overflow-hidden text-center">
+                            <img src="../../assets/Evera/imgs/page/Hisham.jpg" alt="" class="border-radius-10 mb-30 hover-up">
+                            <h4 class="fw-500 mb-0">Hisham Howari</h4>
+                            <p class="fw-400 text-brand mb-10">Team Member</p>
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0 animated">
+                                <a href="https://www.linkedin.com/in/hisham-hawari/" target="_blank" ><img src="../../assets/Evera/imgs/theme/icons/icons8-linkedin-circled-120.png" alt=""></a>
+                                <a href="https://www.linkedin.com/in/hisham-hawari/" target="_blank" > LinkedIn Profile</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--col-->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="blog-card border-radius-10 overflow-hidden text-center">
+                            <img src="../../assets/Evera/imgs/page/ww6.png.jpeg" alt="" class="border-radius-10 mb-30 hover-up">
+                            <h4 class="fw-500 mb-0">Amr Shaban</h4>
+                            <p class="fw-400 text-brand mb-10">Team Member</p>
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0 animated">
+                                <a href="https://jo.linkedin.com/in/amr-shaban-3464691b2" target="_blank" ><img src="../../assets/Evera/imgs/theme/icons/icons8-linkedin-circled-120.png" alt=""></a>
+                                <a href="https://jo.linkedin.com/in/amr-shaban-3464691b2" target="_blank" > LinkedIn Profile</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padding">
+      
+        <div class="container pt-25">
+            <div class="row mb-50">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <h6 class="mt-0 mb-10 text-uppercase  text-brand font-sm wow fadeIn animated animated"
+                        style="visibility: visible;">Testimonials</h6>
+                    <h2 class="mb-15 text-grey-1 wow fadeIn animated animated" style="visibility: visible;">Take a look at
+                        what<br> our clients say about us</h2>
+                    <p class="w-50 m-auto text-grey-3 wow fadeIn animated animated" style="visibility: visible;">At Evara
+                        we value our client's feedback and we take pride in their endorsement.</p> We strive to give you an easy and stress-free shopping experience.
+                </div>
+            </div>
+
+
+            <div class="row align-items-center"  >
+
+                <ng-container *ngFor="let obj of testimonial.loadedTestimonialForUser">
+                <div class="col-md-12 col-lg-4" *ngIf="obj.status === 'Published'" >
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex" >
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Images/{{obj.userImage}}" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                {{obj.fName}} {{obj.lName}}
+                            </h5>
+                            <p class="font-sm text-grey-5">{{obj.roleName}}</p>
+                            <p class="text-grey-3">{{obj.testemoniaL_BODY}}</p>
+                        </div>
+                    </div>
+                </div>
+                </ng-container>
+
+
+
+               <!--  <div class="col-md-6 col-lg-4">
+
+
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex">
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Evera/imgs/page/avatar-3.jpg" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                B.Gates
+                            </h5>
+                            <p class="font-sm text-grey-5">Adobe Jsc</p>
+                            <p class="text-grey-3">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt voluptatum dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex">
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Evera/imgs/page/avatar-2.jpg" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                B. Meyers
+                            </h5>
+                            <p class="font-sm text-grey-5">Adobe Jsc</p>
+                            <p class="text-grey-3">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt voluptatum dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex">
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Evera/imgs/page/avatar-4.jpg" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                J. Bezos
+                            </h5>
+                            <p class="font-sm text-grey-5">Adobe Jsc</p>
+                            <p class="text-grey-3">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt voluptatum dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex">
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Evera/imgs/page/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                B.Gates
+                            </h5>
+                            <p class="font-sm text-grey-5">Adobe Jsc</p>
+                            <p class="text-grey-3">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt voluptatum dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex">
+                        <div class="hero-card-icon icon-left-2 hover-up ">
+                            <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Evera/imgs/page/avatar-1.jpg" alt="">
+                        </div>
+                        <div class="pl-30">
+                            <h5 class="mb-5 fw-500">
+                                B. Meyers
+                            </h5>
+                            <p class="font-sm text-grey-5">Adobe Jsc</p>
+                            <p class="text-grey-3">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt voluptatum dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div> -->
+           
+           
+           
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-50 pb-50" >
+        <div class="container" >
+            <div class="row">
+                <div class="col-xl-8 col-lg-10 m-auto">
+                    <div class="contact-from-area padding-20-row-col wow FadeInUp">
+                        <h3 class="mb-10 text-center" style="padding-top:30px">Add Testimonial</h3>
+                        <p class="text-muted mb-30 text-center font-sm">Give us your honest feedback on your shopping experience at Evara.</p>
+
+                        <form class="contact-form-style text-center" id="contact-form" [formGroup]="createform"
+                        ngNativeValidate>
+
+                            <div class="row">
+
+                               <!--  <div class="col-lg-6 col-md-6">
+                                    <div class="input-style mb-20">
+                                        <input name="name" placeholder="First Name" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="input-style mb-20">
+                                        <input name="email" placeholder="Your Email" type="email">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="input-style mb-20">
+                                        <input name="telephone" placeholder="Your Phone" type="tel">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="input-style mb-20">
+                                        <input name="subject" placeholder="Subject" type="text">
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="col-lg-12 col-md-12" style="padding-bottom:15px">
+                                    <div class="textarea-style mb-30">
+                                        <textarea name="message" placeholder="Message"></textarea>
+                                    </div>
+                                    <button class="submit submit-auto-width" type="submit">Send message</button>
+                                </div> -->
+
+
+                                
+
+
+                                <mat-form-field class="test" style="width:100%" appearance="fill" class="col-lg-6 col-md-6" floatLabel="never" hintLabel="Min 100 characters">
+                                    <mat-label>Message</mat-label>
+                                    <textarea matInput #input minlength="100" maxlength="130" style="height:17px; border:none;" formControlName="testemoniaL_BODY"></textarea>
+                                    <mat-hint align="end">{{input.value?.length || 0}}/130</mat-hint>
+                                  </mat-form-field>
+
+                                  <button class="submit submit-auto-width" type="submit" (click)=" saveTestimonial()">Send
+                                    message</button>
+
+                            </div>
+                            
+                        </form>
+
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section-padding">
+
+    </section>
+    
+
+<!--     <section class="section-padding">
+        <div class="container pb-25">
+            <h3 class="section-title mb-20 wow fadeIn animated text-center"><span>Featured</span> Clients</h3>
+            <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
+                <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-1.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-2.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-3.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-4.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-5.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-6.png" alt="">
+                    </div>
+                    <div class="brand-logo">
+                        <img class="img-grey-hover" src="../../assets/Evera/imgs/banner/brand-3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+</main>
+
+<app-footer></app-footer>

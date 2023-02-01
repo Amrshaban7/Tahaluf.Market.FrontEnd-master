@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+
+<section _ngcontent-yty-c154="" class="newsletter p-30 text-white wow fadeIn animated animated animated" style="visibility: visible;">
+    <div _ngcontent-yty-c154="" class="container"><div _ngcontent-yty-c154="" class="row align-items-center">
+    <div _ngcontent-yty-c154="" class="col-lg-7 mb-md-3 mb-lg-0">
+        <div _ngcontent-yty-c154="" class="row align-items-center">
+            <div _ngcontent-yty-c154="" class="col flex-horizontal-center">
+                <img _ngcontent-yty-c154="" src="../../assets/Images/{{store.loadedStoreInfo.imagE_PATH}}"  alt="" class="brand-6">
+            </div>
+            <div _ngcontent-yty-c154="" class="col my-4 my-md-0 des">
+                <h2 _ngcontent-yty-c154="" class="font-size-20 mb-0 ml-3">{{store.loadedStoreInfo.storeName}}</h2>
+                <h3 _ngcontent-yty-c154="" class="font-size-15 ml-4 mb-0">{{store.loadedStoreInfo.storeDesc}}</h3></div></div></div><div _ngcontent-yty-c154="" class="col-lg-5">
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<main class="main">
+    <section class="mt-50 mb-50" style="transform: none;">
+        <div class="container" style="transform: none;">
+            <div class="row flex-row-reverse" style="transform: none;">
+                <div class="col-lg-9">
+                    <div class="shop-product-fillter">
+                        <div class="totall-product">
+                            <p> This Store has <strong class="text-brand">{{store.loadedProducts.length}} items</strong> for sale!</p>
+                        </div>
+                    </div>
+                    <div class="row product-grid-3">
+                        <div  class="col-lg-4 col-md-4 col-12 col-sm-6" *ngFor="let obj of store.loadedProducts">
+                            <div class="product-cart-wrap mb-30" (click)="loadProduct(obj.productId)">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom" >
+                                        <a (click)="loadProduct(obj.productId)">
+                                            <img class="default-img" src="../../assets/Images/{{obj.productImage}}" alt="" style="min-width:300px; max-width:350px; min-height:250px; max-height:300px;">
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a (click)="loadProduct(obj.productId)" aria-label="View Product" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                        <i class="fi-rs-search"></i></a>
+                                    </div>
+                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                        <span class="hot">Hot</span>
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-category">
+                                        <a href="shop-grid-right.html">{{obj.sectionName}}</a>
+                                    </div>
+                                    <h2><a (click)="loadProduct(obj.productId)">{{obj.productName}}</a></h2>
+                                   
+                                    <div class="product-price" >
+                                        <span *ngIf="store.loadedStoreInfo.currenT_DISCOUNT != 0 && store.loadedStoreInfo.currenT_DISCOUNT != null">${{(obj.price - (store.loadedStoreInfo.currenT_DISCOUNT * (obj.price/100))) | number : '1.1-2'}}</span>
+                                        <span class="old-price" *ngIf="store.loadedStoreInfo.currenT_DISCOUNT != 0 && store.loadedStoreInfo.currenT_DISCOUNT != null">${{obj.price}}</span>
+                                        <span *ngIf="store.loadedStoreInfo.currenT_DISCOUNT == 0 || store.loadedStoreInfo.currenT_DISCOUNT == null">${{obj.price}}</span>
+
+                                    </div>
+                                    <div class="product-action-1 show" (click)="loadProduct(obj.productId)"> 
+                                        <a aria-label="View Product" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></a> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--pagination-->
+
+                </div>
+                <div class="col-lg-3 primary-sidebar sticky-sidebar" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                    
+                    <!-- Fillter By Price -->
+                    
+                    <!-- Product sidebar Widget -->
+                    
+                    
+                <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="widget-category mb-30">
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated animated animated" style="visibility: visible;">Category</h5>
+                        <ul class="categories">
+                            <li ><a (click)="loadAll()">All Categories</a></li>
+                            <li *ngFor="let obj of store.loadedStoreSection"><a (click)="loadProductsBySectionId(obj.id)">{{obj.sectionName}}</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</main>
+
+
+<app-footer></app-footer>

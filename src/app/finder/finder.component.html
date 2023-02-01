@@ -1,0 +1,39 @@
+    <div class="s131">
+        <div class="row">
+            <div class="align-middle" style="text-align:center"> <img src="../../assets/Evera/imgs/theme/logo.svg"/>
+            </div>  
+        <div> <h1>Your Shopping Buddy!</h1>
+        </div>
+      <form>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text"  [formControl]="searchBar" placeholder="Which market are you looking for?" />
+          </div>
+          <!--<div class="input-field second-wrap">
+            <div class="input-select">
+              <select data-trigger="" name="choices-single-defaul">
+                <option placeholder="">CATEGORY</option>
+                <option>Subject A</option>
+                <option>Subject B</option>
+                <option>Subject C</option>
+              </select>
+            </div>
+          </div>-->
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button"(click)="searchMarket()">SEARCH</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+
+    </div>
+    <script src="../../assets/Finder/js/extention/choices.js"></script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false
+      });
+
+    </script>

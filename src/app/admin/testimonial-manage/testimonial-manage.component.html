@@ -1,0 +1,174 @@
+<app-asidenav></app-asidenav>
+
+
+<main class="main-wrap">
+
+
+
+
+
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Testimonial List</h2>
+                <p>Manage which Ones you want to display on your website</p>
+            </div>
+            <div>
+                <input type="text" placeholder="Search" class="form-control bg-white" >
+            </div>
+        </div>
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row align-items-center">
+                 <!--    <div class="col col-check flex-grow-0">
+                        <div class="form-check ms-2">
+                            <input class="form-check-input" type="checkbox" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
+                        <select class="form-select">
+                            <option selected>All category</option>
+                            <option>Electronics</option>
+                            <option>Clothes</option>
+                            <option>Automobile</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <input type="date" value="02.05.2021" class="form-control">
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <select class="form-select">
+                            <option selected>Status</option>
+                            <option>Active</option>
+                            <option>Disabled</option>
+                            <option>Show all</option>
+                        </select>
+                    </div> -->
+                </div>
+            </header> <!-- card-header end// -->
+            <div class="card-body">
+
+               
+
+                <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>FName</th>
+                        <th>LName</th>
+                        <th>roleName</th>
+                        <th>body</th>
+                        <th>Status</th>
+                        <th class="text-end">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let obj of testimonial.loadedTestimonialForUser">
+                        <td> <img src="../../../assets/Images/{{obj.userImage}}" style="min-width: 70px ; min-height: 70px" class="img-sm img-thumbnail" alt="Item"></td>
+                        <td><b>{{obj.fName | lowercase}}</b></td>
+                        <td>{{obj.lName | lowercase}}</td>
+                        <td> <span class="badge rounded-pill alert-warning">{{obj.roleName}}</span></td>
+                        <td style="max-width:300px;" >{{obj.testemoniaL_BODY | lowercase}}</td>
+                        <td *ngIf="obj.status === 'Published' " > <span class="badge rounded-pill alert-success">{{obj.status}}</span></td>
+                        <td *ngIf="obj.status === 'Pending'   " > <span class="badge rounded-pill alert-danger" >{{obj.status}}</span></td>
+
+                        <td class="text-end">
+                            <div class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item" (click)="openUpdate(obj.testimonialId, obj.fName , obj.lName , obj.testemoniaL_BODY, obj.status , obj.roleName , obj.userId)" >Edit</button>
+                                    <button class="dropdown-item text-danger" (click)="openDelete(obj.testimonialId)" >Delete</button>
+                                </div>
+                            </div> <!-- dropdown //end -->
+                        </td>
+                    </tr>
+                    <br><br>
+
+                   
+                </tbody>
+
+            </table>
+               
+            </div> <!-- card-body end// -->
+        </div> <!-- card end// -->
+      
+    </section> <!-- content-main end// -->
+  
+
+
+    
+<app-footernav></app-footernav>
+
+
+
+</main>
+
+<ng-template #CallDelete>
+
+    <h2 mat-dialog-title>Are You Sure That You want to delete The Store ??</h2>
+
+    <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+    &nbsp;
+    <button class="button-24" mat-button mat-dialog-close="no">No</button>
+
+</ng-template>
+<!-- ~ -->
+<ng-template #callUpdate>
+
+    <form class="example-form" [formGroup]="updateform">
+
+        <div style="font-size: 14px">
+
+           
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>Fname</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="fName"
+                    [(ngModel)]="previous_data.fName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>lName</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="lName"
+                    [(ngModel)]="previous_data.lName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>testemoniaL_BODY</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="testemoniaL_BODY"
+                    [(ngModel)]="previous_data.testemoniaL_BODY">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>roleName</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="roleName"
+                    [(ngModel)]="previous_data.roleName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill" style="display:none;">
+                <mat-label>userId</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="userId"
+                    [(ngModel)]="previous_data.userId">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Status</mat-label>
+               <mat-select formControlName="status" [(ngModel)]="previous_data.status">
+                <mat-option value="Published">Published</mat-option>
+                <mat-option value="Pending">Pending</mat-option>
+               </mat-select>
+               </mat-form-field>
+
+        </div>
+
+        <button class="button-26" (click)="updateTestimonial()" [mat-dialog-close]="true">Update</button>
+
+
+
+    </form>
+
+
+</ng-template>

@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+
+<main class="main">
+
+    <section class="home-slider position-relative mb-30">
+     
+        <div class="container">
+
+            <div class="home-slide-cover bg-grey-10 mt-30">
+
+                <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                   
+                    <div class="single-hero-slider single-animation-wrap">
+                        <div class="container">
+                            <div class="row align-items-center slider-animated-1">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="hero-slider-content-2">
+                                        <h4 class="animated">{{market.loadedMarketInfo.marketType}}</h4>
+                                        <h3 class="animated fw-900">Supper Value Deals</h3>
+                                        <h2 class="animated fw-900 text-brand">{{market.loadedMarketInfo.marketName}}</h2>
+                                        <p class="animated">Save more with coupons & up to 70% off</p>
+                                        <a class="animated btn btn-brush btn-brush-3" href="shop-product-right.html" tabindex="0"> See Stores </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="single-slider-img single-slider-img-1">
+                                    <img class="animated" src="../../assets/Images/{{market.loadedMarketInfo.imagE_PATH}}" alt="">
+                                    <!-- <img class="animated" src="../../assets/Evera/imgs/slider/slider-6.png" alt=""> -->                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   <!--  <div class="single-hero-slider single-animation-wrap">
+                        <div class="container">
+                            <div class="row align-items-center slider-animated-1">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="hero-slider-content-2">
+                                        <h4 class="animated">Hot promotions</h4>
+                                        <h3 class="animated fw-900">Fashion Trending</h3>
+                                        <h2 class="animated fw-900 text-brand">Great Collection</h2>
+                                        <p class="animated">Save more with coupons & up to 20% off</p>
+                                        <a class="animated btn btn-brush btn-brush-1" href="shop-product-right.html" tabindex="0"> Get It Now </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="single-slider-img single-slider-img-1">
+                                        <img class="animated" src="../../assets/Evera/imgs/slider/slider-7.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="slider-arrow hero-slider-1-arrow"></div>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <section class="product-tabs pt-25 pb-20 wow fadeIn animated">
+        <div class="container">
+            <div class="row">
+          
+                <div class="col-lg-9">
+                    <div class="shop-product-fillter style-2">
+                        <div class="totall-product">
+                            <p> This market features <strong class="text-brand">{{market.loadedStores.length}} stores</strong>!</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-list mb-50">
+
+
+                        <div class="product-cart-wrap" *ngFor="let obj of market.loadedStores">
+                            <div class="product-img-action-wrap">
+                                <div class="product-img product-img-zoom">
+                                    <div class="product-img-inner">
+                                        <a (click)="loadStore(obj.storeId)">
+                                            <img class="default-img" src="../../assets/Images/{{obj.storeImage}}" alt="" style="min-width:300px; max-width:300px; min-height:250px; max-height:300px;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-action-1">
+                                    <a (click)="loadStore(obj.storeId)" aria-label="View Store" class="action-btn hover-up" data-bs-toggle="modal">
+                                    <i class="fi-rs-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <div class="product-category">
+                                    <a>{{obj.categoryName}}</a>
+                                </div>
+                                <h2><a (click)="loadStore(obj.storeId)">{{obj.storeName}}</a></h2>
+                                <div class="product-price">
+                                    <span *ngIf="obj.currentDiscount != 0 && obj.currentDiscount != null">%{{obj.currentDiscount}} Discount!</span>
+                                </div>
+                                <p class="mt-15">{{obj.storeDesc}}</p>
+                                <div class="product-action-1 show">
+                                    <a aria-label="Shop Now" class="action-btn" (click)="loadStore(obj.storeId)"><i class="fi-rs-shopping-bag"></i>View Store</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--single product-->
+                    </div>
+                    
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget-category mb-30">
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                        <ul class="categories">
+                            <li><a (click)="loadAll()">All Categories</a></li>
+                            <li *ngFor="let obj of market.loadedMarketCategories"><a (click)="loadStoresByCategory(obj.id)">{{obj.categoryName}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="banner-2 section-padding pb-0">
+        <div class="container">
+            <div class="banner-img banner-big wow fadeIn animated f-none">
+                <img src="../../assets/Evera/imgs/banner/banner-4.png" alt="">
+                <div class="banner-text d-md-block d-none">
+                    <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
+                    <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
+                    <a href="shop-grid-right.html" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+</main>
+
+
+<app-footer></app-footer>

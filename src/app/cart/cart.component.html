@@ -1,0 +1,125 @@
+<app-navbar></app-navbar>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow">Home</a>
+                <span></span> Shop
+                <span></span> Your Cart
+            </div>
+        </div>
+    </div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table shopping-summery text-center clean">
+                            <thead>
+                                <tr class="main-heading">
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let obj of purchase.cart.cartItems">
+                                    <td class="image product-thumbnail"><img src="../../assets/Images/{{obj.image_Path}}" alt="#"></td>
+                                    <td class="product-des product-name">
+                                        <h4 class="product-name"><a>{{obj.productName}}</a></h4>
+                                        
+                                    </td>
+                                    <td class="price" data-title="Price">
+                                        <span *ngIf="purchase.cart.currentDiscount == 0 || purchase.cart.currentDiscount == null" class="text-brand">${{obj.price | number : '1.1-2'}}</span>
+                                        <span *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null" class="text-brand">${{(obj.price - (purchase.cart.currentDiscount * (obj.price/100))) | number : '1.1-2'}}</span>
+                                        <span *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null" class="old-price font-md ml-15"><del>${{obj.price | number : '1.1-2'}}</del></span>
+                                    </td>
+                
+                                    <td class="text-center" data-title="Stock">
+                                        <div class="detail-qty border radius  m-auto">
+                                            <a class="qty-down"><i class="fi-rs-angle-small-down" (click)="RemoveItemFromCart(purchase.cart.cartid,obj.productId)"></i></a>
+                                            <span class="qty-val">{{obj.itemQuanitity}}</span>
+                                            <a class="qty-up"><i class="fi-rs-angle-small-up" (click)="AddItemToCart(purchase.cart.cartid,obj.productId,1)"></i></a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <span *ngIf="purchase.cart.currentDiscount == 0 || purchase.cart.currentDiscount == null">${{obj.sum | number : '1.1-2'}}</span>
+                                        <span *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null">${{(obj.sum - (obj.sum  * (purchase.cart.currentDiscount/100))) | number : '1.1-2'}}</span>
+                                    </td>
+                                    <td class="action" data-title="Remove"><a class="text-muted" (click)="DeleteItemFromCart(purchase.cart.cartid,obj.productId)"><i class="fi-rs-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <a (click)="ClearCart(purchase.cart.cartid)" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-action text-end">
+                        <a class="btn  mr-10 mb-sm-15" (click)="UpdateCart()"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
+                        <a class="btn " (click)="ContinueShopping()"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                    </div>
+                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                    <div class="row mb-50">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="mb-30 mt-50">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Apply Promo Code</h4>
+                                </div>
+                                <div class="heading_s1 mb-3">
+                                    <h5 *ngIf="purchase.cart.promoCodeId != null">Currently Used: <span class="text-brand">{{purchase.cart.promocode}} ({{purchase.cart.promoDiscount}}% OFF)</span></h5>
+                                </div>
+                                <div class="total-amount">
+                                    <div class="left">
+                                        <div class="coupon">                         
+                                                <div class="form-row row justify-content-center">
+                                                    <div class="form-group col-lg-6">
+                                                        <input class="font-medium" [formControl]="PromoCode" placeholder="Enter Your Promo Code">
+                                                    </div>
+                                                    <div class="form-group col-lg-6">
+                                                        <button class="btn btn-sm" (click)="ApplyPromoCode()"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Cart Totals</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cart_total_label">Cart Subtotal</td>
+                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${{purchase.cartTotal | number : '1.1-2'}}</span></td>
+                                            </tr>
+                                            <tr *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null">
+                                                <td class="cart_total_label">Store Discount</td>
+                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i>- ${{purchase.cartTotal * (purchase.cart.currentDiscount/100) | number : '1.1-2'}} ({{purchase.cart.currentDiscount}}% Off)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Total</td>
+                                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${{(purchase.cartTotal - (purchase.cartTotal * (purchase.cart.currentDiscount/100))) | number : '1.1-2' }}</span></strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a (click)="GoToCheckOut()" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<app-footer></app-footer>

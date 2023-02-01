@@ -1,0 +1,52 @@
+:root {
+  --listdomer-body-bg: ((body_bg_color)); /* Main Body Background Color */
+  --listdomer-main-font-m: "((main_font))", Arial, monospace; /* Main Font Family */
+  --listdomer-main-gbg1: ((g_color1)); /* Main Gradient Background Color 1 */
+  --listdomer-main-gbg2: ((g_color2)); /* Main Gradient Background Color 2 */
+  --listdomer-main-gtc: ((g_text_color)); /* Main Gradient Text Color */
+  --listdomer-main-hc: ((g_active_color1)); /* Main Hover / Active Color */
+  --listdomer-main-hc2: ((g_active_color2)); /* Main Hover / Active Color 2 */
+  --listdomer-main-bc: ((main_border_color)); /* Main Border Color */
+  --listdomer-main-tc: ((main_title_color)); /* Main Title Color */
+  --listdomer-main-atc: ((main_atc_color)); /* Main Active Text Color */
+  --listdomer-second-bg: ((second_bg_color)); /* Second Background Color */
+  --listdomer-headlines-c: ((headlines_color)); /* Main Headlines Color */
+
+  --listdomer-header-bg: ((header_bg_color)); /* Header Background Color */
+  --listdomer-header-tc: ((header_text_color)); /* Header Text Color */
+
+  --listdomer-sidebar-ic: ((sidebar_input_color)); /* Sidebar Input Color */
+  --listdomer-sidebar-tc: ((sidebar_text_color)); /* Sidebar Text Color */
+  --listdomer-sidebar-ac: ((sidebar_a_color)); /* Sidebar A Tag Color */
+  --listdomer-sidebar-bc: ((sidebar_border_color)); /* Sidebar Border Color */
+
+  --listdomer-carousel-bc: ((carousel_border_color)); /* Carousel Border Color */
+  --listdomer-carousel-abc: ((carousel_active_color)); /* Carousel Active Border / Background Color */
+
+  --listdomer-widget-c: ((widget_color)); /* Main Widget Color */
+  --listdomer-widget-ac: ((widget_active_color)); /* Main Widget Active Color */
+
+  --listdomer-content-c: ((content_color)); /* Main Content Color */
+  --listdomer-content-ac: ((content_a_color)); /* Main Content A Tag Color */
+  --listdomer-content-acc: ((content_a_active_color)); /* Main Content Active Color */
+
+  --listdomer-listdom-single-ic: ((single_icon_color)); /* Listdom Icon Color */
+  --listdomer-listdom-single-ic2: ((single_icon_color2)); /* Listdom Icon Color 2 */
+  --listdomer-listdom-single-sc: ((single_star_color)); /* Listdom Star Color */
+  --listdomer-listdom-single-ac: ((single_active_color)); /* Listdom Active Color */
+  --listdomer-listdom-single-sb-bg: ((single_slider_button_bg)); /* Listdom Slider Button Background */
+  --listdomer-listdom-single-sb-c: ((single_slider_button_color)); /* Listdom Slider Button Color */
+
+  --listdomer-footer-bg: ((footer_bg_color)); /* Footer Background Color */
+  --listdomer-footer-tc: ((footer_text_color)); /* Footer Title Color */
+  --listdomer-footer-fbg: ((footer_fbg_color)); /* Footer Frame Background Color */
+  --listdomer-footer-ac: ((footer_active_color)); /* Footer Active Color */
+}
+
+.listdomer-color-m-txt{color: ((g_color1)) !important;}
+.listdomer-color-m-bg{background-color: ((g_color1)) !important;}
+.listdomer-color-m-brd{border-color: ((g_color1)) !important;}
+.listdomer-color-s-txt{color: ((g_color2)) !important;}
+.listdomer-color-s-bg{background-color: ((g_color2)) !important;}
+.listdomer-color-s-brd{border-color: ((g_color2)) !important;}
+.listdomer-font-m{font-family: "((main_font))", Arial, monospace;}

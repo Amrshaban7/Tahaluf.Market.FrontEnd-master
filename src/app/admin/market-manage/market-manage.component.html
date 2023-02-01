@@ -1,0 +1,353 @@
+<app-asidenav></app-asidenav>
+
+
+<main class="main-wrap">
+
+    <section class="content-main">
+
+        <div class="content-header">
+            <h2 class="content-title">All Markets</h2>
+            <div>
+                <button class="btn btn-primary" mat-button (click)="openCreate()"><i class="material-icons md-plus"></i>
+                    Create new </button>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row gx-3">
+                   
+                </div>
+            </header> <!-- card-header end// -->
+
+            <div class="card-body">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+
+
+
+
+                    <div class="col-xl-4 col-lg-3 col-md-6" *ngFor="let obj of market.markets">
+                        <div class="card card-user">
+
+                            <div class="text-end">
+                                <div class="dropdown">
+                                    <a href="#" data-bs-toggle="dropdown"> <i class="material-icons md-more_horiz"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item" (click)="openCreateCategory(obj.id , obj.marketName)">Add
+                                            Category</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-header">
+                                <img class="img-md img-avatar"
+                                    src="../../../assets/Images/{{obj.imagE_PATH}}" alt="User pic">
+                            </div>
+                            <div class="card-body">
+                                <h5 style="margin-bottom:20px; margin-top:55px; color:#007bff"
+                                    (click)="loadMarket(obj.id)"><a>{{obj.marketName}}</a></h5>
+                                <h6 style="margin-bottom:10px;">{{obj.marketDesc}}</h6>
+
+                                <p class="m-0">{{obj.marketType}} In {{obj.location}}</p>
+                                <div class="card-text text-muted" style="display:inline-flex">
+
+                                    <button class="btn btn-sm btn-brand rounded font-sm mt-15" (click)="openUpdate(obj.id,obj.marketName,obj.marketDesc,
+                                        obj.marketType,obj.location , obj.imagE_PATH , obj.lng , obj.lat)">Edit Market</button>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <button class="btn btn-sm btn-brand rounded font-sm mt-15"
+                                        (click)="openDelete(obj.id)">Delete Market</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- col.// -->
+
+
+
+
+
+                </div> <!-- row.// -->
+            </div> <!-- card-body end// -->
+
+        </div> <!-- card end// -->
+
+        <!--   <div class="pagination-area mt-15 mb-50">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-start">
+                        <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                        <li class="page-item"><a class="page-link" href="#">02</a></li>
+                        <li class="page-item"><a class="page-link" href="#">03</a></li>
+                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">16</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+                    </ul>
+                </nav>
+            </div> -->
+
+    </section> <!-- content-main end// -->
+
+
+
+
+    <app-footernav></app-footernav>
+
+
+
+</main>
+
+
+
+<ng-template #CallCreate>
+
+    <h2 mat-dialog-title>Create New Market </h2>
+
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="createform">
+
+            <div style="font-size: 14px">
+
+                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+
+                    <mat-label>Market Name</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="marketName">
+                    <mat-error *ngIf="createform.controls['marketName'].hasError('required')">
+                        Market name is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+
+                    <mat-label>Description</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="marketDesc">
+                    <mat-error *ngIf="createform.controls['marketDesc'].hasError('required')">
+                        Description is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+
+                    <mat-label>market Type</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="marketType">
+                    <mat-error *ngIf="createform.controls['marketType'].hasError('required')">
+                        Market type is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+                    <mat-label>location</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="location">
+                    <mat-error *ngIf="createform.controls['location'].hasError('required')">
+                        Location is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+                    <mat-label>Longitude</mat-label>
+                    <input type="number" style="height: 17px; border: none;" matInput formControlName="lng">
+                    <mat-error *ngIf="createform.controls['lng'].hasError('required')">
+                        Location is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+                    <mat-label>Latitude</mat-label>
+                    <input type="number" style="height: 17px; border: none;" matInput formControlName="lat">
+                    <mat-error *ngIf="createform.controls['lat'].hasError('required')">
+                        Location is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="image_Path" #file (change)="UploadImage(file.files)">
+                <label class="file-input__label" for="file-input">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="upload"
+                      class="svg-inline--fa fa-upload fa-w-16"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512" >
+                      <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                      </path>
+                    </svg>
+                    <span>Add Image</span></label>
+            </div>
+
+
+        </form>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button class="button-28" mat-button mat-dialog-close>Cancel</button>
+        &nbsp;&nbsp;
+        <button class="button-27" mat-button [mat-dialog-close]="true" cdkFocusInitial
+            (click)="saveMarket()">Save</button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+<!-- ~ -->
+
+<ng-template #CallDelete>
+
+    <h2 mat-dialog-title>Are You Sure That You want to delete The Market ?</h2>
+
+    <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+    &nbsp;
+    <button class="button-24" mat-button mat-dialog-close="no">No</button>
+
+
+
+
+</ng-template>
+
+<!-- ~ -->
+
+<ng-template #callUpdate>
+
+    <form class="example-form" [formGroup]="updateform">
+
+        <div style="font-size: 14px">
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Market Name</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="marketName"
+                    [(ngModel)]="previous_data.marketName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Market Description</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="marketDesc"
+                    [(ngModel)]="previous_data.marketDesc">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Market Type</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="marketType"
+                    [(ngModel)]="previous_data.marketType">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Longitude</mat-label>
+                <input type="number" style="height: 17px; border: none;" matInput formControlName="lng"
+                    [(ngModel)]="previous_data.lng">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Latitude</mat-label>
+                <input type="number" style="height: 17px; border: none;" matInput formControlName="lat"
+                    [(ngModel)]="previous_data.lat">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Location</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="location"
+                    [(ngModel)]="previous_data.location">
+            </mat-form-field>
+
+                <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="image_Path" [(ngModel)]="previous_data.image_Path" value={{previous_data.image_Path}} #file (change)="UploadImage(file.files)">
+                <label class="file-input__label" for="file-input">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="upload"
+                      class="svg-inline--fa fa-upload fa-w-16"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512" >
+                      <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                      </path>
+                    </svg>
+                    <span>Add Image</span></label>
+
+        </div>
+
+        <button class="button-26" (click)="updateMarket()" [mat-dialog-close]="true">Update</button>
+
+
+
+    </form>
+
+
+</ng-template>
+
+
+
+<ng-template #CallCreateCategory>
+
+    <h2 mat-dialog-title>Create New Category</h2>
+
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="createform1">
+
+            <div style="font-size: 14px">
+
+                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+
+                    <mat-label>Category Name</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="categoryName">
+                    <mat-error *ngIf="createform1.controls['categoryName'].hasError('required')">
+                        Category name is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+
+                    <mat-label>Description</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="categoryDesc">
+                    <mat-error *ngIf="createform1.controls['categoryDesc'].hasError('required')">
+                        Description is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill" >
+
+                    <mat-label>market Name</mat-label>
+                    <mat-select formControlName="marketID">
+                        <mat-option selected [value]="marketID">{{marketName}}</mat-option>
+                    </mat-select>
+
+                    <!-- <input type="number" style="height: 17px; border: none;" matInput formControlName="marketID">
+                    <mat-error *ngIf="createform1.controls['marketID'].hasError('required')">
+                        Description is <strong>required</strong>
+                    </mat-error> -->
+                </mat-form-field>
+
+            </div>
+
+
+        </form>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button class="button-28" mat-button mat-dialog-close>Cancel</button>
+        &nbsp;&nbsp;
+        <button class="button-27" mat-button [mat-dialog-close]="true" cdkFocusInitial
+            (click)="saveCategory()">Save</button>
+    </mat-dialog-actions>
+
+</ng-template>

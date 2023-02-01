@@ -1,0 +1,17 @@
+
+
+.input-style :focus{
+
+    border: 2px solid #088178;
+    border-radius: 6px;
+
+}
+
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+

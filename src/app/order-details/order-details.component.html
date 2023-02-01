@@ -1,0 +1,154 @@
+<app-navbar></app-navbar>
+<main class="main">
+<section class="content-main" >
+    <div class="card col-lg-12">
+        <header class="card-header">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                    <span>
+                        <i class="material-icons md-calendar_today"></i> <b> {{orders.loadedOrderDetails.orderTime | date:'medium'}}</b>
+                    </span> <br>
+                    <small class="text-muted">Order ID: {{orders.loadedOrderDetails.orderId}}</small>
+                </div>
+                <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                    <a class="btn btn-primary" (click)="print()">Print <i class="icon material-icons md-print"></i></a>                </div>
+            </div>
+        </header> <!-- card-header end// -->
+
+        <div class="m-auto" style="text-align:center ;">
+            <p *ngIf="orders.loadedOrderDetails.orderStatus == 'Pending'"><img src="../../assets/Evera/imgs/theme/OrderPending.gif" alt="" width="320" height="320"></p>
+            <p *ngIf="orders.loadedOrderDetails.orderStatus == 'Delivered'"><img src="../../assets/Evera/imgs/theme/OrderDelivered.gif" alt="" width="320" height="320"></p>
+            <p *ngIf="orders.loadedOrderDetails.orderStatus == 'In Delivery'"><img src="../../assets/Evera/imgs/theme/OrderInDelivery.gif" alt="" width="320" height="320"></p>
+            <p *ngIf="orders.loadedOrderDetails.orderStatus == 'Confirmed'"><img src="../../assets/Evera/imgs/theme/OrderConfirmed.gif" alt="" width="320" height="320"></p>
+
+            <h2 *ngIf="orders.loadedOrderDetails.orderStatus == 'Pending'">Order Pending!</h2>
+            <h2 *ngIf="orders.loadedOrderDetails.orderStatus == 'Delivered'">Order Delivered!</h2>
+            <h2 *ngIf="orders.loadedOrderDetails.orderStatus == 'In Delivery'">Order Out For Delivery!</h2>
+            <h2 *ngIf="orders.loadedOrderDetails.orderStatus == 'Confirmed'">Order Confirmed!</h2>
+
+            <p class="font-lg text-grey-700 mb-30" *ngIf="orders.loadedOrderDetails.orderStatus == 'Pending'">
+              Your order has been placed successfully and is pending confirmation by the store!
+            </p>
+
+            <p class="font-lg text-grey-700 mb-30" *ngIf="orders.loadedOrderDetails.orderStatus == 'Delivered'">
+                Your order has been delivered to you successfully!
+              </p>
+
+              <p class="font-lg text-grey-700 mb-30" *ngIf="orders.loadedOrderDetails.orderStatus == 'In Delivery'">
+                Your order is out for delivery and is on its way to you!
+              </p>
+              <p class="font-lg text-grey-700 mb-30" *ngIf="orders.loadedOrderDetails.orderStatus == 'Confirmed'">
+                Your order has been recived and confirmed by the store and is being assembled!
+              </p>
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-50 mt-20 order-info-wrap">
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-person"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Customer</h6>
+                            <p class="mb-1">
+                                {{orders.loadedOrderDetails.userFName}} {{orders.loadedOrderDetails.userLName}} <br> {{orders.loadedOrderDetails.userEmail}} <br> {{orders.loadedOrderDetails.userPhoneNumber}}
+                            </p>
+                        </div>
+                    </article>
+                </div> <!-- col// -->
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-local_shipping"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Order info</h6>
+                            <p class="mb-1">
+                                Shipping: Local Delivery <br> Number of Products: {{orders.loadedOrderDetails.numberOfItems}} <br> Status: {{orders.loadedOrderDetails.orderStatus}}
+                            </p>
+                            <a href="#">Download info</a>
+                        </div>
+                    </article>
+                </div> <!-- col// -->
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-place"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Deliver to</h6>
+                            <p class="mb-1">
+                                City: Tashkent, Uzbekistan <br>Block A, House 123, Floor 2 <br> Po Box 10000
+                            </p>
+                            <a>View profile</a>
+                        </div>
+                    </article>
+                </div> <!-- col// -->
+            </div> <!-- row // -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table" #content>
+                            <thead>
+                                <tr>
+                                    <th width="40%">Product</th>
+                                    <th width="20%">Unit Price</th>
+                                    <th width="20%">Quantity</th>
+                                    <th width="20%" class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of orders.loadedOrderDetails.orderItems">
+                                    <td>
+                                        <a class="itemside">
+                                            <div class="left">
+                                                <img src="../../assets/Images/{{item.image_Path}}" width="40" height="40" class="img-sm" alt="Item">
+                                            </div>
+                                            <div class="info"> {{item.productName}}</div>
+                                        </a>
+                                    </td>
+                                    <td> ${{item.price}}</td>
+                                    <td> {{item.itemQuanitity}} </td>
+                                    <td class="text-end"> ${{item.sum}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <article class="float-end">
+                                            <dl class="dlist">
+                                                <dt>Subtotal:</dt>
+                                                <dd>${{orders.loadedOrderDetails.priceSum | number : '1.1-2'}}</dd>
+                                            </dl>
+                                            <dl class="dlist" *ngIf="orders.loadedOrderDetails.storeDiscount != 0 && orders.loadedOrderDetails.storeDiscount != null">
+                                                <dt>Store Discount:</dt>
+                                                <dd>- ${{orders.loadedOrderDetails.priceSum * (orders.loadedOrderDetails.storeDiscount/100)}} ({{orders.loadedOrderDetails.storeDiscount | number : '1.1-2'}}% Off)</dd>
+                                            </dl>
+                                            <dl class="dlist" *ngIf="orders.loadedOrderDetails.promoDiscount != 0 && orders.loadedOrderDetails.promoDiscount != null">
+                                                <dt>Promo Code Discount:</dt>
+                                                <dd>- ${{orders.loadedOrderDetails.priceSum * (orders.loadedOrderDetails.promoDiscount/100)}} ({{orders.loadedOrderDetails.promoDiscount | number : '1.1-2'}}% Off)</dd>
+                                            </dl>
+                                            <dl class="dlist">
+                                                <dt>Grand total:</dt>
+                                                <dd> <b style="color:#088178; font-weight:700;" [ngClass]="'h5'">${{(orders.loadedOrderDetails.priceSum - (orders.loadedOrderDetails.priceSum * (orders.loadedOrderDetails.storeDiscount/100)) - (orders.loadedOrderDetails.priceSum* (orders.loadedOrderDetails.promoDiscount/100))) | number : '1.1-2'}}</b> </dd>
+                                            </dl>
+                                            <dl class="dlist">
+                                                <dt [ngClass]="'text-muted , h6'">Status:</dt>
+                                                <dd>
+                                                    <span [ngClass]="'badge rounded-pill alert-success text-success h3'">Payment Done</span>
+                                                </dd>
+                                            </dl>
+                                        </article>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- table-responsive// -->
+                    <a class="btn btn-primary">View Order Tracking</a>
+                </div> <!-- col// -->
+                <div class="col-lg-1"></div>
+            </div>
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+</section>
+</main>
+<app-footer></app-footer>

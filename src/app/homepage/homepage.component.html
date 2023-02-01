@@ -1,0 +1,286 @@
+<app-navbar></app-navbar>
+
+<main class="main">
+
+    <app-finder></app-finder>
+
+    <!-- Modal -->
+<!--     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('assets/Evera/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden
+                                    Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span
+                                    class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span
+                                    class="countdown-section"><span class="countdown-amount hover-up">03</span><span
+                                        class="countdown-period"> days </span></span><span
+                                    class="countdown-section"><span class="countdown-amount hover-up">02</span><span
+                                        class="countdown-period"> hours </span></span><span
+                                    class="countdown-section"><span class="countdown-amount hover-up">43</span><span
+                                        class="countdown-period"> mins </span></span><span
+                                    class="countdown-section"><span class="countdown-amount hover-up">29</span><span
+                                        class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i
+                                    class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <section class="featured section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-1.png" alt="">
+                        <h4 class="bg-1">Free Shipping</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-2.png" alt="">
+                        <h4 class="bg-3">Promo Codes</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-3.png" alt="">
+                        <h4 class="bg-2">Store Discounts</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-4.png" alt="">
+                        <h4 class="bg-4">Online Payment</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-5.png" alt="">
+                        <h4 class="bg-5">Happy Sell</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
+                    <div class="banner-features wow fadeIn animated hover-up animated animated animated"
+                        style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/theme/icons/feature-6.png" alt="">
+                        <h4 class="bg-6">Contact Support</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deals section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 deal-co">
+                    <div class="deal fadeIn animated mb-md-4 mb-sm-4 mb-lg-0 animated animated"
+                        style="background-image: url(../../assets/Evera/imgs/theme/mappin.gif); background-size:50%;
+                        width: 100%;background-position:right; background-color: white;
+                       ; visibility: visible;">
+                        <div class="deal-top">
+                            <h1 class="text-brand">Find a Market Using Our Map.</h1>
+                            <h3 style="max-width: 550px; line-height: 1.5;font-weight:250;">Explore and Locate a nearby market, select a store, add products and order online. <br/> It's that easy!</h3>
+                        </div>
+                        <div class="deal-bottom">
+                            <a [routerLink]="['/Map']" class="btn hover-up">Explore Map <i
+                                    class="fi-rs-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-categories section-padding mt-15">
+        <div class="container wow fadeIn animated animated animated" style="visibility: visible;">
+            <h3 class="section-title mb-20"><span>New</span> Products</h3>
+            <div class="carausel-6-columns-cover position-relative">
+                <div class="carausel-6-columns slick-initialized slick-slider" id="carausel-6-columns">
+
+                            <div *ngFor="let item of store.recentProducts" class=" mb-50 card-1 slick-slide slick-cloned" style="width: 303px ;">
+                                <figure class="img-hover-scale overflow-hidden">
+                                    <a (click)="loadProduct(item.productId,item.storeId)" tabindex="-1"><img
+                                            src="../../assets/Images/{{item.productImage}}" alt=""></a>
+                                </figure>
+                                <h5><a (click)="loadProduct(item.productId,item.storeId)" tabindex="-1">{{item.productName}}</a></h5>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-grey-9 section-padding">
+        <div class="container pt-15 pb-25">
+            <div class="heading-tab d-flex">
+                <div class="heading-tab-left wow fadeIn animated animated animated" style="visibility: visible;">
+                    <h3 class="section-title mb-20">Biggest <span>Discount</span> </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 d-none d-lg-flex">
+                    <div class="banner-img style-2 wow fadeIn animated animated animated" style="visibility: visible;">
+                        <img src="../../assets/Evera/imgs/banner/replacement.png" alt="">
+                        <div class="banner-text">
+                            <h2 style="color:white ;">{{store.biggestDiscountStore.storeName}}</h2>
+                            <h4 class="mt-5">Save {{store.biggestDiscountStore.currentDiscount}}% on <br>{{store.biggestDiscountStore.categoryDesc}}</h4>
+                            <a (click)="loadStore(store.biggestDiscountStore.storeId)" class="text-white">Shop Now <i
+                                    class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12">
+                    <div class="tab-content wow fadeIn animated animated animated" id="myTabContent-1"
+                        style="visibility: visible;">
+                        <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel"
+                            aria-labelledby="tab-one-1">
+                            <div class="carausel-4-columns-cover arrow-center position-relative">
+                                <div class="carausel-4-columns carausel-arrow-center slick-initialized slick-slider"
+                                    id="carausel-4-columns">
+
+                                    <div *ngFor="let obj of store.biggestDiscountProducts"  class="product-cart-wrap slick-slide slick-cloned" tabindex="-1"
+                                                style="width: 216px;" data-slick-index="-3" id="" aria-hidden="true">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom">
+                                                        <a (click)="loadProductAndStore(obj.productId)" tabindex="-1">
+                                                            <img class="default-img"
+                                                                src="../../assets/Images/{{obj.productImage}}"
+                                                                alt=""
+                                                                style="min-width:200px; min-height:200px; max-width:200px; max-height:200px;"
+                                                                >
+                        
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        <a aria-label="View Product" class="action-btn small hover-up"
+                                                        (click)="loadProductAndStore(obj.productId)" tabindex="-1"><i
+                                                                class="fi-rs-search"></i></a>
+                                                    </div>
+                                                    <div
+                                                        class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="best">Big Sale!</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content-wrap">
+                                                    <div class="product-category">
+                                                        <a (click)="loadProductAndStore(obj.productId)"tabindex="-1">{{obj.sectionName}}</a>
+                                                    </div>
+                                                    <h2><a (click)="loadProductAndStore(obj.productId)"tabindex="-1">{{obj.productName}}</a>
+                                                    </h2>
+                                                    <div class="product-price">
+                                                        <span *ngIf="store.biggestDiscountStore.currentDiscount != 0 && store.biggestDiscountStore.currentDiscount != null">${{(obj.price - (store.biggestDiscountStore.currentDiscount * (obj.price/100))) | number : '1.1-2'}}</span>
+                                                        <span class="old-price" *ngIf="store.biggestDiscountStore.currentDiscount != 0 && store.biggestDiscountStore.currentDiscount != null">${{obj.price}}</span>
+                                                        <span *ngIf="store.biggestDiscountStore.currentDiscount == 0 || store.biggestDiscountStore.currentDiscount == null">${{obj.price}}</span>
+                                                    </div>
+                                                    <div class="product-action-1 show">
+                                                        <a aria-label="View Product" class="action-btn hover-up"
+                                                        (click)="loadProductAndStore(obj.productId)" tabindex="-1"><i
+                                                                class="fi-rs-shopping-bag-add"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <!--End tab-pane-->
+                    </div>
+                    <!--End tab-content-->
+                </div>
+                <!--End Col-lg-9-->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="banner-2 section-padding pb-0">
+        <div class="container">
+
+            <div class="banner-img banner-big wow fadeIn animated f-none animated animated"
+                style="visibility: visible;">
+                <img src="../../assets/Evera/imgs/banner/banner-4.png" alt="">
+                <div class="banner-text d-md-block d-none">
+                    <h4 class="mb-15 mt-40 text-brand">Contact Us!</h4>
+                    <h3 class="fw-600 mb-20">We would love to hear from you <br>Contact us for any complaints or
+                        suggestions.</h3>
+                    <a [routerLink]="['/contactus']" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="testimonials" class="section-padding">
+        <div class="container pt-25">
+            <div class="row mb-50">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <h6 class="mt-0 mb-10 text-uppercase  text-brand font-sm wow fadeIn animated animated"
+                        style="visibility: visible;">Testimonials</h6>
+                    <h2 class="mb-15 text-grey-1 wow fadeIn animated animated" style="visibility: visible;">Take a look at
+                        what<br> our clients say about us</h2>
+                    <p class="w-50 m-auto text-grey-3 wow fadeIn animated animated" style="visibility: visible;">At Evara
+                        we value our client's feedback and we take pride in their endorsement.</p> We strive to give you an easy and stress-free shopping experience.
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+
+
+                <ng-container *ngFor="let obj of testimonial.loadedTestimonialForUser">
+                    <div class="col-md-12 col-lg-4" *ngIf="obj.status === 'Published'" >
+                        <div class="hero-card box-shadow-outer-6 wow fadeIn animated mb-30 hover-up d-flex" >
+                            <div class="hero-card-icon icon-left-2 hover-up ">
+                                <img class="btn-shadow-brand hover-up border-radius-5 bg-brand-muted" src="../../assets/Images/{{obj.userImage}}" alt="">
+                            </div>
+                            <div class="pl-30">
+                                <h5 class="mb-5 fw-500">
+                                    {{obj.fName}} {{obj.lName}}
+                                </h5>
+                                <p class="font-sm text-grey-5">{{obj.roleName}}</p>
+                                <p class="text-grey-3">{{obj.testemoniaL_BODY}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </ng-container>
+                
+
+            </div>
+
+
+            <div class="row mt-30">
+                <div class="col-12 text-center">
+                    <p class="wow fadeIn animated animated" style="visibility: visible;">
+                        <a [routerLink]="['/aboutus']" class="btn btn-brand text-white btn-shadow-brand hover-up btn-lg">View More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<app-footer></app-footer>
+
+

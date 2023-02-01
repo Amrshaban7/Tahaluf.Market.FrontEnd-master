@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<head> 
+     <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+</head>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow">Home</a>
+                <span></span> Shop
+                <span></span> Checkout
+            </div>
+        </div>
+    </div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-12">
+                    <div class="order_review">
+                        <div class="mb-20">
+                            <h4>Your Orders</h4>
+                        </div>
+                        <div class="table-responsive order_table text-center">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of purchase.cart.cartItems">
+                                        <td class="image product-thumbnail"><img src="../../assets/Images/{{obj.image_Path}}" alt="#"></td>
+                                        <td>
+                                            <h5><a href="shop-product-full.html">{{obj.productName}}</a></h5> <span class="product-qty">x {{obj.itemQuanitity}}</span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="purchase.cart.currentDiscount == 0 || purchase.cart.currentDiscount == null" class="text-brand">${{obj.sum | number : '1.1-2'}}</span>
+                                            <span *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null" class="text-brand">${{(obj.sum - (purchase.cart.currentDiscount * (obj.sum/100))) | number : '1.1-2'}}</span>
+                                            <span *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null" class="old-price font-md ml-15"><del>${{obj.sum | number : '1.1-2'}}</del></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>SubTotal</th>
+                                        <td class="product-subtotal" colspan="2">${{purchase.cartTotal}}</td>
+                                    </tr>
+                                    <tr *ngIf="purchase.cart.currentDiscount != 0 && purchase.cart.currentDiscount != null">
+                                        <th>Store Discount</th>
+                                        <td colspan="2"><em>- ${{purchase.cartTotal * (purchase.cart.currentDiscount/100) | number : '1.1-2'}} ({{purchase.cart.currentDiscount}}% Off)</em></td>
+                                    </tr>
+                                    <tr *ngIf="purchase.cart.promoCodeId != 0 && purchase.cart.promoCodeId != null">
+                                        <th>Promo Code Discount</th>
+                                        <td colspan="2"><em>- ${{purchase.cartTotal * (purchase.cart.promoDiscount/100)}} ({{purchase.cart.promoDiscount | number : '1.1-2'}}% Off)</em></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">${{(purchase.cartTotal - (purchase.cartTotal * (purchase.cart.currentDiscount/100)) - (purchase.cartTotal * (purchase.cart.promoDiscount/100))) | number : '1.1-2'}}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                        <div class="payment_method">
+                            <div class="mb-25">
+                                <h4>Online Payment</h4>
+                            </div>
+
+                        </div>
+                        <div  class="row justify-content-center" >
+                            <div id="paymentButtons" class="col-md-12" ></div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,411 @@
+<app-asidenav></app-asidenav>
+
+
+<main class="main-wrap">
+
+    <section class="content-main">
+        <div class="content-header">
+            <a href="javascript:history.back()"><i class="material-icons md-arrow_back"></i> Go back </a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header bg-primary" style="height:150px">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl col-lg flex-grow-0" style="flex-basis:230px">
+                        <div class="img-thumbnail shadow w-100 bg-white position-relative text-center"
+                            style="height:190px; width:200px; margin-top:-120px">
+                            <img src="../../../assets/Images/{{market.loadedMarketInfo.imagE_PATH}}" class="center-xy img-fluid"
+                                alt="Logo Brand">
+                        </div>
+                    </div> <!--  col.// -->
+
+                    <div class="col-xl col-lg">
+                        <h3>{{market.loadedMarketInfo.marketName}}</h3>
+                        <p>{{market.loadedMarketInfo.marketDesc}}</p>
+                    </div> <!--  col.// -->
+                    <div class="col-xl-4 text-md-end">
+                       
+                        <button (click)="openCreate()" class="btn btn-primary"> Add Store <i
+                                class="material-icons md-playlist_add"></i> </button>
+                    </div> <!--  col.// -->
+                </div> <!-- card-body.// -->
+                <hr class="my-4">
+                <div class="row g-4">
+                    <div class="col-md-12 col-lg-4 col-xl-2">
+                        <article class="box">
+                            <p class="mb-0 text-muted">Total stores:</p>
+                            <h5 class="text-success">{{market.loadedStores.length}}</h5>
+                            <p class="mb-0 text-muted">Total Category:</p>
+                            <h5 class="text-success mb-0">{{market.loadedMarketCategories.length}}</h5>
+                        </article>
+                    </div> <!--  col.// -->
+                    <div class="col-sm-6 col-lg-4 col-xl-3">
+                        <h6>Type: </h6>
+                        <p>
+                            {{market.loadedMarketInfo.marketType}}
+                        </p>
+                    </div> <!--  col.// -->
+                    <div class="col-sm-6 col-lg-4 col-xl-3">
+                        <h6>Address:</h6>
+                        <p>
+                            {{market.loadedMarketInfo.location}}
+                        </p>
+                    </div> <!--  col.// -->
+                    <div class="col-sm-6 col-xl-4 text-xl-end">
+                        <map class="mapbox position-relative d-inline-block">
+                            <img src="../../../assets/EvaraBackEnd/imgs/misc/map.jpg" class="rounded2" height="120"
+                                alt="map">
+                            <span class="map-pin" style="top:50px; left: 100px"></span>
+                            <a href="http://maps.google.co.uk/maps?q={{market.loadedMarketInfo.lat}},{{market.loadedMarketInfo.lng}}" target="_blank" class="btn btn-sm btn-brand position-absolute bottom-0 end-0 mb-15 mr-15 font-xs">
+                                Show On Map </a>
+                        </map>
+                    </div> <!--  col.// -->
+                </div> <!--  row.// -->
+            </div> <!--  card-body.// -->
+        </div> <!--  card.// -->
+
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title"> Categories In <strong class="text-success">
+                        {{market.loadedMarketInfo.marketName}}
+                    </strong> Market</h5>
+
+                <div class="row">
+
+
+                    <div class="col-xl-2 col-lg-3 col-md-12" *ngFor="let obj of market.loadedMarketCategories">
+
+                        <div class="card card-product-grid">
+
+                            <div class="text-end">
+                                <div class="dropdown">
+                                    <a href="#" data-bs-toggle="dropdown"> <i class="material-icons md-more_horiz"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item"
+                                            (click)="openUpdate1(obj.id,obj.categoryName,obj.categoryDesc)">Edit</button>
+                                        <button class="dropdown-item text-danger"
+                                            (click)="openDeleteCategory(obj.id)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="info-wrap" style="text-align:center">
+                                <a href="#" class="price mt-1">{{obj.categoryName}}</a>
+                                <div class="title">{{obj.categoryDesc}}</div> <!-- price-wrap.// -->
+                            </div>
+
+                        </div> <!-- card-product  end// -->
+                    </div> <!-- col.// -->
+
+
+
+
+                </div> <!-- row.// -->
+
+
+
+
+            </div> <!--  card-body.// -->
+        </div> <!--  card.// -->
+
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title"> Stores In <strong class="text-success"> {{market.loadedMarketInfo.marketName}}
+                    </strong> Market</h5>
+
+                <div class="row">
+
+
+                    <div class="col-xl-2 col-lg-3 col-md-6" *ngFor="let obj of market.loadedStores">
+
+                        <div class="card card-product-grid">
+
+
+
+
+                            <div class="text-end">
+                                <div class="dropdown">
+                                    <a href="#" data-bs-toggle="dropdown"> <i class="material-icons md-more_horiz"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item" (click)="openUpdate(obj.storeId,obj.storeName,obj.storeDesc,
+                                            obj.currentDiscount,obj.categoryId, obj.storeImage)">Edit</button>
+                                        <button class="dropdown-item text-danger"
+                                            (click)="openDelete(obj.storeId)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="img-wrap"> <img src="../../../assets/Images/{{obj.storeImage}}" alt="Product"
+                                    (click)="loadStore(obj.storeId)"> </a>
+
+
+                            <div class="info-wrap" style="text-align:center">
+                                <a class="price mt-1" (click)="loadStore(obj.storeId)">{{obj.storeName}}</a>
+                                <div class="title">{{obj.storeDesc}}</div>
+                                <div *ngIf="obj.currentDiscount != null && obj.currentDiscount != 0" class="text-danger">{{obj.currentDiscount}}% OFF</div> 
+                                <div *ngIf="obj.currentDiscount == null || obj.currentDiscount == 0"></div> 
+
+                            </div>
+
+
+
+
+                        </div> <!-- card-product  end// -->
+                    </div> <!-- col.// -->
+
+
+
+
+                </div> <!-- row.// -->
+
+
+
+
+            </div> <!--  card-body.// -->
+        </div> <!--  card.// -->
+
+       
+
+
+        <!--  <div class="pagination-area mt-30 mb-50">
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-start">
+                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+     -->
+
+    </section> <!-- content-main end// -->
+
+    <app-footernav></app-footernav>
+
+</main>
+
+
+<ng-template #CallCreate>
+
+    <h2 mat-dialog-title>Create New Store </h2>
+
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="createform">
+
+            <div style="font-size: 14px">
+
+                <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+
+                    <mat-label>Store Name</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="storeName">
+                    <mat-error *ngIf="createform.controls['storeName'].hasError('required')">
+                        Store name is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+
+                    <mat-label>Description</mat-label>
+                    <input type="text" style="height: 17px; border: none;" matInput formControlName="storeDesc">
+                    <mat-error *ngIf="createform.controls['storeDesc'].hasError('required')">
+                        Description is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+
+                    <mat-label>Discount</mat-label>
+                    <input type="number" style="height: 17px; border: none;" matInput
+                        formControlName="currenT_DISCOUNT">
+
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field style="width:100%" class="example-full-width" appearance="fill">
+                    <mat-label>category Name</mat-label>
+
+                    <mat-select formControlName="categoryID">
+                        <mat-option *ngFor="let obj of market.loadedMarketCategories" [value]="obj.id">{{obj.categoryName}}</mat-option>
+                    </mat-select>
+
+                    <mat-error *ngIf="createform.controls['categoryID'].hasError('required')">
+                        categoryID is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="imagePath" #file (change)="UploadImage(file.files)">
+                <label class="file-input__label" for="file-input">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="upload"
+                      class="svg-inline--fa fa-upload fa-w-16"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512" >
+                      <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                         </path>
+                    </svg>
+                    <span>Upload Image</span></label>
+
+            </div>
+
+
+        </form>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button class="button-28" mat-button mat-dialog-close>Cancel</button>
+        &nbsp;&nbsp;
+        <button class="button-27" mat-button [mat-dialog-close]="true" cdkFocusInitial
+            (click)="saveStore()">Save</button>
+    </mat-dialog-actions>
+
+</ng-template>
+<!-- ~ -->
+<ng-template #CallDelete>
+
+    <h2 mat-dialog-title>Are You Sure That You want to delete The Store ?</h2>
+
+    <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+    &nbsp;
+    <button class="button-24" mat-button mat-dialog-close="no">No</button>
+
+</ng-template>
+<!-- ~ -->
+<ng-template #callUpdate>
+
+    <form class="example-form" [formGroup]="updateform">
+
+        <div style="font-size: 14px">
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Store Name</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="storeName"
+                    [(ngModel)]="previous_data.storeName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Store Description</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="storeDesc"
+                    [(ngModel)]="previous_data.storeDesc">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Current Discount</mat-label>
+                <input type="number" style="height: 17px; border: none;" matInput formControlName="currenT_DISCOUNT"
+                    [(ngModel)]="previous_data.currenT_DISCOUNT">
+            </mat-form-field>
+
+            <!-- <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>categoryID</mat-label>
+                <input type="number" style="height: 17px; border: none;" matInput formControlName="categoryID"
+                    [(ngModel)]="previous_data.categoryID">
+            </mat-form-field> -->
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>sectionName</mat-label>
+               <mat-select formControlName="categoryID" [(ngModel)]="previous_data.categoryID">
+                <mat-option *ngFor="let obj of market.loadedMarketCategories" [value]="obj.id">{{obj.categoryName}}</mat-option>
+               </mat-select>
+               </mat-form-field>
+
+               <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="imagePath"  [(ngModel)]="previous_data.imagePath" value={{previous_data.imagePath}} #file (change)="UploadImage(file.files)">
+               <label class="file-input__label" for="file-input">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="upload"
+                  class="svg-inline--fa fa-upload fa-w-16"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512" >
+                  <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                     </path>
+                </svg>
+                <span>Update Image</span></label>
+        </div>
+
+        <button class="button-26" (click)="updateStore()" [mat-dialog-close]="true">Update</button>
+
+
+
+    </form>
+
+
+</ng-template>
+
+<!-- ////////// Category ////////// -->
+
+<ng-template #CallDeleteCategory>
+
+    <h2 mat-dialog-title>Are You Sure That You want to delete The Category ?</h2>
+
+    <button class="button-25" mat-button mat-dialog-close="yes">Yes</button>
+    &nbsp;
+    <button class="button-24" mat-button mat-dialog-close="no">No</button>
+
+</ng-template>
+
+<ng-template #callUpdateCategory>
+
+    <form class="example-form" [formGroup]="updateform1">
+
+        <div style="font-size: 14px">
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Store Name</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="categoryName"
+                    [(ngModel)]="previous_data1.categoryName">
+            </mat-form-field>
+
+            <mat-form-field style="width:100%;" class="example-full-width" appearance="fill">
+                <mat-label>Store Description</mat-label>
+                <input type="text" style="height: 17px; border: none;" matInput formControlName="categoryDesc"
+                    [(ngModel)]="previous_data1.categoryDesc">
+            </mat-form-field>
+
+
+        </div>
+
+        <button class="button-26" (click)="updateStore1()" [mat-dialog-close]="true">Update</button>
+
+
+
+    </form>
+
+
+</ng-template>
+
+
+<script src="../../../assets/EvaraBackEnd/js/vendors/jquery-3.6.0.min.js"></script>
+<script src="../../../assets/EvaraBackEnd/vendors/bootstrap.bundle.min.js"></script>
+<script src="../../../assets/EvaraBackEnd/vendors/select2.min.js"></script>
+<script src="../../../assets/EvaraBackEnd/vendors/perfect-scrollbar.js"></script>
+<script src="../../../assets/EvaraBackEnd/js/vendors/jquery.fullscreen.min.js"></script>
+<script src="assets/EvaraBackEnd/js/vendors/chart.js"></script>
+<!-- Main Script -->
+<script src="../../../assets/EvaraBackEnd/main.js" type="text/javascript"></script>
+<script src="../../../assets/EvaraBackEnd/custom-chart.js" type="text/javascript"></script>

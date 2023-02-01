@@ -1,0 +1,254 @@
+
+
+
+
+
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow">Home</a>
+                <span></span> Pages
+                <span></span> Login / Register
+            </div>
+        </div>
+    </div>
+    <section class="pt-150 pb-150">
+        
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-10 m-auto">
+                    <div class="row">
+
+                        <div class="col-lg-5" >
+                            <div style="background-color: white;"
+                                class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5">
+                                <div class="padding_eight_all bg-white">
+                                    <div class="heading_s1">
+                                        <h3 class="mb-30">Login</h3>
+                                    </div>
+
+
+                                    <mat-form-field>
+                                        <input style="border:0cm; padding-right: 10px; background-color: white;" type="email" matInput [formControl]="emailFormControl" name="email"
+                                            placeholder="Your Email">
+                                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                                Email is <strong>required</strong>
+                                            </mat-error>
+                                    </mat-form-field>
+                               <br> 
+                                    <mat-form-field>
+                                        <input style="border:0cm;" type="password" matInput [formControl]="passFormControl" name="password"
+                                            placeholder="Password">
+                                            <mat-error *ngIf="passFormControl.hasError('required')">
+                                                password is <strong>required</strong>
+                                            </mat-error>
+                                    </mat-form-field>
+
+                                    <div class="login_footer form-group">
+                                        <div class="chek-form">
+                                            <div class="custome-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="checkbox"
+                                                    id="exampleCheckbox1" value="">
+                                                <label class="form-check-label" for="exampleCheckbox1"><span>Remember
+                                                        me</span></label>
+                                            </div>
+                                        </div>
+                                        <a class="text-muted" href="#">Forgot password?</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-fill-out btn-block hover-up"
+                                            (click)="submit()">Log in</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-1"></div>
+                        
+                        <div class="col-lg-6">
+                            <div style="background-color: white;" class="login_wrap widget-taber-content p-30 background-white border-radius-5">
+                                <div class="padding_eight_all bg-white">
+
+                                    <div class="heading_s1">
+                                        <h3 class="mb-30">Create an Account</h3>
+                                    </div>
+
+                                    <p class="mb-50 font-sm">
+                                        Your personal data will be used to support your experience throughout this
+                                        website, to manage access to your account, and for other purposes described in
+                                        our privacy policy
+                                    </p>
+
+                                    <form [formGroup]="profileForm">
+
+                                        <!-- <div class="form-group">
+                                            <input type="text" required="" name="fName" placeholder="First Name"
+                                                formControlName="fName">
+                                        </div> -->
+
+
+                                        <mat-form-field  floatLabel="never" color="primary" style="padding-right:30px;" >
+
+                                            <mat-label>First Name</mat-label>
+                                            <input type="text" style="height: 17px; border: none;"  matInput
+                                                formControlName="fName">
+                                            <mat-error *ngIf="profileForm.controls['fName'].hasError('required')">
+                                                First Name is <strong>required</strong>
+                                            </mat-error>
+        
+                                        </mat-form-field>
+
+
+                                                                                                                                                                    
+
+                                       <!--  <div class="form-group">
+                                            <input type="text" required="" name="lName" placeholder="Last Name"
+                                                formControlName="lName">
+                                        </div> -->
+
+
+                                        <mat-form-field floatLabel="never" color="primary"  >
+
+                                            <mat-label>Last Name</mat-label>
+                                            <input type="text" style="height: 17px; border: none;" matInput
+                                                formControlName="lName">
+                                            <mat-error *ngIf="profileForm.controls['lName'].hasError('required')">
+                                                Last Name is <strong>required</strong>
+                                            </mat-error>
+        
+                                        </mat-form-field>
+
+
+
+                                        <!-- <div class="form-group">
+                                            <input type="email" required="" name="email" placeholder="Email"
+                                                formControlName="email">
+                                        </div> -->
+
+                                        <mat-form-field style="padding-right:30px;" floatLabel="never" color="primary" >
+
+                                            <mat-label>Email</mat-label>
+                                            <input type="text" style="height: 17px; border: none;" matInput
+                                                formControlName="email">
+                                            <mat-error *ngIf="profileForm.controls['email'].hasError('required')">
+                                                Email is <strong>required</strong>
+                                            </mat-error>
+                                            <mat-error *ngIf="profileForm.controls['email'].hasError('pattern')">
+                                                Please inter a correct <strong>Email</strong>
+                                            </mat-error>
+        
+                                        </mat-form-field>
+
+
+                                        <!-- <div class="form-group">
+                                            <input type="number" required="" name="phoneNumber"
+                                                placeholder="Phone Number" formControlName="phoneNumber">
+                                        </div> -->
+
+
+                                        <mat-form-field style="padding-right:30px;" floatLabel="never" color="primary" >
+
+                                            <mat-label>Phone Number</mat-label>
+                                            <input type="number" style="height: 17px; border: none;" matInput
+                                                formControlName="phoneNumber"  onKeyPress="if(this.value.length==10) return false;" >
+                                            <mat-error *ngIf="profileForm.controls['phoneNumber'].hasError('required')">
+                                                Phone Number is <strong>required</strong>
+                                            </mat-error>
+                                            <mat-error *ngIf="profileForm.controls['phoneNumber'].hasError('minLength')">
+                                                Phone Number Should Be At Least <strong>10 numbers</strong>
+                                            </mat-error>
+                                             
+        
+                                        </mat-form-field>
+
+
+                                      <!--   <div class="form-group">
+                                            <input required="" type="password" name="password" placeholder="Password"
+                                                formControlName="password">
+                                        </div> -->
+
+                                        <mat-form-field style="padding-right:30px;" floatLabel="never" color="primary" >
+
+                                            <mat-label>Password</mat-label>
+                                            <input type="password" style="height: 17px; border: none;" matInput
+                                                formControlName="password">
+                                            <mat-error *ngIf="profileForm.controls['password'].hasError('required')">
+                                                Password is <strong>required</strong>
+                                            </mat-error>
+        
+                                        </mat-form-field>
+
+
+                                       <!--  <div class="form-group">
+                                            <input required="" type="password" name="repassword"
+                                                placeholder="Confirm password" formControlName="repassword"
+                                                (change)="matchError()">
+
+                                            <mat-error *ngIf="profileForm.controls['repassword'].hasError('mismatch')">
+                                                confirmPassword must match with password
+                                            </mat-error>
+                                        </div> -->
+
+
+                                        <mat-form-field style="padding-right:30px;" floatLabel="never" color="primary" >
+
+                                            <mat-label>Re-Password</mat-label>
+                                            <input type="text" style="height: 17px; border: none;" matInput
+                                                formControlName="repassword" (change)="matchError()" >
+                                            <mat-error *ngIf="profileForm.controls['repassword'].hasError('required')">
+                                                Re-Password is <strong>required</strong>
+                                            </mat-error>
+                                            <mat-error *ngIf="profileForm.controls['repassword'].hasError('mismatch')">
+                                                Re-Password must match with password
+                                            </mat-error>
+        
+                                        </mat-form-field>
+
+
+                                         <br>
+                                       
+                                           
+                                            <input name="file-input" id="file-input" class="file-input__input" type="file" formControlName="image_path" #file (change)="UploadImage(file.files)">
+                                            <label class="file-input__label" for="file-input">
+                                                <svg
+                                                  aria-hidden="true"
+                                                  focusable="false"
+                                                  data-prefix="fas"
+                                                  data-icon="upload"
+                                                  class="svg-inline--fa fa-upload fa-w-16"
+                                                  role="img"
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                                  viewBox="0 0 512 512" >
+                                                  <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                                                  </path>
+                                                </svg>
+                                                <span>Add Image</span></label>
+
+                                            <br><br>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-fill-out btn-block hover-up" name="login"
+                                                 (click)="signUp()" (click)="matchError()" >Submit &amp;
+                                                Register</button>
+                                                
+                                        </div>
+
+                                    </form>
+
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
